@@ -11,6 +11,11 @@ import InstructorDashboard from "../Layouts/InstructorDashboard";
 import InstructorDashboardHome from "../Components/Dashboards/InstructorDashboard/InstructorDashboardHome";
 import AddAClass from "../Components/Dashboards/InstructorDashboard/AddAClass/AddAClass";
 import MyClasses from "../Components/Dashboards/InstructorDashboard/MyClasses/MyClasses";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
+import PrivateRoute from "./PrivateRoute";
+import Instructors from "../Components/Instructors/Instructors";
+import Classes from "../Components/Classes/Classes";
 
 const router = createBrowserRouter([
     {
@@ -30,8 +35,16 @@ const router = createBrowserRouter([
                 element: <Register></Register>
             },
             {
+                path: "/instructors",
+                element: <Instructors></Instructors>
+            },
+            {
+                path: "/classes",
+                element: <Classes></Classes>
+            },
+            {
                 path: "dashboard/admin",
-                element: <AdminDashboard></AdminDashboard>,
+                element: <AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>,
                 children: [
                     {
                         path: "",
@@ -49,7 +62,25 @@ const router = createBrowserRouter([
             },
             {
                 path: "dashboard/instructor",
-                element: <InstructorDashboard></InstructorDashboard>,
+                element: <InstructorRoute><InstructorDashboard></InstructorDashboard></InstructorRoute>,
+                children: [
+                    {
+                        path: "",
+                        element: <InstructorDashboardHome></InstructorDashboardHome>
+                    },
+                    {
+                        path: "addclass",
+                        element: <AddAClass></AddAClass>
+                    },
+                    {
+                        path: "myclasses",
+                        element: <MyClasses></MyClasses>
+                    }
+                ]
+            },
+            {
+                path: "dashboard/student",
+                element: <PrivateRoute></PrivateRoute>,
                 children: [
                     {
                         path: "",
