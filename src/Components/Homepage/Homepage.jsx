@@ -8,8 +8,7 @@ const Homepage = () => {
             <Banner></Banner>
             <PopularClasses></PopularClasses>
             <PopularInstructors></PopularInstructors>
-            
-        </div>
+        </div >
     );
 };
 

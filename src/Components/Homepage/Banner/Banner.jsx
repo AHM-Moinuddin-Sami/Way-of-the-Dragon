@@ -31,7 +31,7 @@ export default function Banner() {
         <div>
 
 
-            <div className="hero  bg-base-200">
+            <div className="hero bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <Swiper
                         effect={"cube"}
