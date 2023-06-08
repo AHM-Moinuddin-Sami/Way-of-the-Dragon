@@ -3,10 +3,13 @@ import { useContext } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Components/Providers/AuthProvider";
+import useAdmin from "../../Hooks/useAdmin";
 
 const NavigationBar = () => {
 
     const { user, logOut } = useContext(AuthContext);
+
+    const [isAdmin] = useAdmin();
 
     const handleImageError = event => {
         event.target.src = "https://cdn-icons-png.flaticon.com/512/1159/1159740.png?w=826&t=st=1684510789~exp=1684511389~hmac=001c7068b857dcdf5d33ca46a56143913e082a0a3dff59fefd023af56e239687";
@@ -42,6 +45,9 @@ const NavigationBar = () => {
                             <li><Link to={"/myToys"}>My Toys</Link></li>
                             <li><Link to={"/addToys"}>Add a Toy</Link></li>
                         </>
+                    }
+                    {
+                        isAdmin && <li><Link>Admin Dashboard</Link></li>
                     }
                     <li><Link to={"/blog"}>Blogs</Link></li>
                 </ul>

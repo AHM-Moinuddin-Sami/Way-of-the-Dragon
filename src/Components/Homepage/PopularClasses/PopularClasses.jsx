@@ -1,8 +1,10 @@
 
 const PopularClasses = () => {
+
+
     return (
         <div>
-            Popular classes
+            asd
         </div>
     );
 };
