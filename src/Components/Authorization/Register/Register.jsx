@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import GoogleLogin from "../GoogleLogin/GoogleLogin";
 
 const Register = () => {
 
@@ -42,14 +43,14 @@ const Register = () => {
                         })
                             .then(res => res.json())
                             .then(data => {
+                                console.log(data);
                                 if (data.insertedId) {
                                     reset();
                                     Swal.fire({
-                                        position: 'top-end',
                                         icon: 'success',
                                         title: 'User created successfully.',
                                         showConfirmButton: false,
-                                        timer: 1500
+                                        timer: 2000
                                     });
                                     navigate('/');
                                 }
@@ -61,28 +62,6 @@ const Register = () => {
                     .catch(error => console.log(error))
             })
     };
-
-    // const handleRegistration = event => {
-    //     event.preventDefault();
-
-    //     const name = event.target.name.value;
-    //     const photo = event.target.photo.value;
-    //     const email = event.target.email.value;
-    //     const password = event.target.password.value;
-
-    //     signUp(email, password)
-    //         .then(result => {
-    //             const createdUser = result.user;
-    //             createdUser.photoURL = photo;
-    //             createdUser.displayName = name;
-    //             setErrorMessage('');
-    //             navigate("/");
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //             setErrorMessage(firebaseErrorFormater(error));
-    //         })
-    // }
 
     const handleTerms = (event) => {
         setTerms(event.target.checked);
@@ -97,59 +76,64 @@ const Register = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className="form-control">
 
                     <label className="">
-                        <span className="">Your Name</span>
+                        <span className="">Your Name*</span>
                     </label>
-                    <input className="rounded" {...register("name", { required: true })} />
+                    <input className="rounded input-bordered input" {...register("name", { required: true })} />
                     {errors.name && <span className="text-red-600">Name is required</span>}
 
                     <label className="">
                         <span className="">Your Email*</span>
                     </label>
-                    <input {...register("email", { required: true })} />
-                    {errors.email && <span>This field is required.</span>}
+                    <input className="rounded input-bordered input" {...register("email", { required: true })} />
+                    {errors.email && <span className="text-red-600">This field is required.</span>}
 
                     <label className="">
                         <span className="">Your Password*</span>
                     </label>
-                    <input className="w-full" {...register("password", {
+                    <input className="rounded input-bordered input" {...register("password", {
                         required: true,
                         pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                         minLength: 6
-                        })} type="password" />
+                    })} type="password" />
                     {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                     {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                     {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
 
 
-                    <label>Confirm Password:</label>
-                    <input {...register("confirmPassword", { required: true })} type="password" />
-                    {errors.confirmPassword && <span>This field is required.</span>}
+                    <label>Confirm Password*</label>
+                    <input className="rounded input-bordered input" {...register("confirmPassword", { required: true })} type="password" />
+                    {errors.confirmPassword && <span className="text-red-600">This field is required.</span>}
                     {errorMessage && <span>{errorMessage}</span>}
 
                     <label className="">
-                        <span className="">Photo URL</span>
+                        <span className="">Photo URL*</span>
                     </label>
-                    <input {...register("photoURL", { required: true })} />
-                    {errors.photoURL && <span>This field is required.</span>}
+                    <input className="rounded input-bordered input" {...register("photoURL", { required: true })} />
+                    {errors.photoURL && <span className="text-red-600">This field is required.</span>}
 
-                    <label>Gender:</label>
-                    <select {...register("gender")}>
+                    <label>Gender</label>
+                    <select className="rounded input-bordered input" {...register("gender")}>
                         <option value="">Prefer not to divulge</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="other">Other</option>
                     </select>
 
+                    <label>Phone Number</label>
+                    <input className="rounded input-bordered input" type="text" inputMode="numeric" {...register("phoneNumber", {
+                        pattern: {
+                            value: /^[0-9]*$/,
+                            message: 'Please enter a valid number',
+                        },
+                    })} />
+                    {errors.phoneNumber && <span className="text-red-600">{errors.phoneNumber.message}</span>}
 
-                    <label>Phone Number:</label>
-                    <input type="text" {...register("phoneNumber")} />
-
-                    <label>Address:</label>
-                    <input {...register("address")} />
+                    <label>Address</label>
+                    <input className="rounded input-bordered input" {...register("address")} />
 
                     <div className="flex mt-3">
                         <span className="mr-3">Accept Terms and Conditions</span>
-                        <input onClick={handleTerms} type="checkbox" className="checkbox" />
+                        <input onClick={handleTerms} type="checkbox" className="checkbox border-black" />
                     </div>
 
                     <button type='submit' disabled={!terms} className="btn mt-3">Register</button>
@@ -161,6 +145,10 @@ const Register = () => {
 
                     <h3 className='mt-3'>Already have an account? <Link className='text-blue-500 font-semibold' to='/login'>Login</Link></h3>
                 </form>
+                <div className="divider">OR</div>
+                <div className="text-center mt-2">
+                    <GoogleLogin></GoogleLogin>
+                </div>
             </div>
         </div>
     );
