@@ -13,15 +13,15 @@ const Feedback = ({ isDenied }) => {
     // console.log(item._id);
     console.log(id);
 
-    const { data: item = [], isLoading: loading, refetch } = useQuery({
-        queryKey: ['class'],
+    const { data: feedbackClass = [], isLoading: loading, refetch } = useQuery({
+        queryKey: ['feedbackClass'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/classes/${id}`)
+            const res = await axios.get(`http://localhost:5000/classes/all/${id}`)
             return res.data;
         }
     })
 
-    console.log(item);
+    console.log(feedbackClass);
 
     const onSubmit = async (data) => {
         const feedback = data.feedback;
@@ -36,7 +36,7 @@ const Feedback = ({ isDenied }) => {
             refetch();
             Swal.fire({
                 icon: 'success',
-                title: `${item.name} feedback submitted!`,
+                title: `${feedbackClass.name} feedback submitted!`,
                 showConfirmButton: false,
                 timer: 1500
             });

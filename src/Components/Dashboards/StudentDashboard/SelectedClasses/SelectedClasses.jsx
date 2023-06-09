@@ -3,13 +3,14 @@ import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const SelectedClasses = () => {
 
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
-    const { data: selectedClasses = [], isLoading } = useQuery({
-        queryKey: ['class'],
+    const { data: selectedClasses = [], isLoading, refetch } = useQuery({
+        queryKey: ['selectedClasses'],
         queryFn: async () => {
             const res = await axiosSecure.get(`http://localhost:5000/users/student/select/${user.email}`)
             return res.data;
@@ -17,7 +18,7 @@ const SelectedClasses = () => {
     })
 
     const { data: items = [] } = useQuery({
-        queryKey: ['selectedClass'],
+        queryKey: ['items'],
         queryFn: async () => {
             const res = await axios.get(`http://localhost:5000/classes`)
             return res.data;
@@ -35,9 +36,27 @@ const SelectedClasses = () => {
     }
 
 
-    const handleDelete = () => {
-
-    }
+    const handleDelete = async (id, name) => {
+        console.log(id, name)
+        try {
+            const response = await axios.patch(
+                `http://localhost:5000/users/student/select/delete/${user.email}`,
+                {
+                    id: id
+                }
+            );
+            refetch();
+            console.log(response.data); // Response from the backend
+            Swal.fire({
+                icon: 'success',
+                title: `${name} successfully deleted from selected classes!`,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
 
     return (
@@ -75,14 +94,12 @@ const SelectedClasses = () => {
                                 <td>{item.totalSeats - item.enrolledStudents}</td>
                                 <td>{item.price}$</td>
                                 <td className="join join-vertical">
-                                    <button className="btn join-item p-0 btn-success">
-                                        <Link
-                                            to={`/dashboard/student/payment`}
-                                            className="btn btn-sm btn-ghost hover:bg-none"
-
-                                        >pay</Link>
-                                    </button>
-                                    <button className="btn btn-error join-item">delete</button>
+                                    <Link
+                                        to={`/dashboard/student/payment`}
+                                        className="btn btn-success hover:bg-none join-item"
+                                    >
+                                        pay</Link>
+                                    <button onClick={() => handleDelete(item._id, item.name)} className="btn btn-error join-item">delete</button>
                                 </td>
                             </tr>
                         )

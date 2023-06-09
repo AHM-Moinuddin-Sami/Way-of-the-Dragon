@@ -16,9 +16,9 @@ const UpdateClass = () => {
     const [errorMessage, setErrorMessage] = useState("");
 
     const { data: item = [], isLoading: loading, refetch } = useQuery({
-        queryKey: ['class'],
+        queryKey: ['item'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/classes/${id}`)
+            const res = await axios.get(`http://localhost:5000/classes/all/${id}`)
             return res.data;
         }
     })

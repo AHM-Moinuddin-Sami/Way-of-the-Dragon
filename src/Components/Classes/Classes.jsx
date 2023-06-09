@@ -18,11 +18,11 @@ const Classes = () => {
             {
                 classes.map(item => <ClassCard
                     key={item._id}
-                    photo={item.image}
-                    name={item.name}
-                    instructor={item.instructorName}
-                    available={item.totalSeats - item.enrolledStudents}
-                    price={item.price}
+                    photo = {item.image}
+                    name = {item.name}
+                    instructor = {item.instructorName}
+                    available = {item.totalSeats - item.enrolledStudents}
+                    price = {item.price}
                     id={item._id}
                 ></ClassCard>)
             }

@@ -3,6 +3,7 @@ import PopularClasses from "./PopularClasses/PopularClasses";
 import PopularInstructors from "./PopularInstructors/PopularInstructors";
 
 const Homepage = () => {
+
     return (
         <div>
             <Banner></Banner>

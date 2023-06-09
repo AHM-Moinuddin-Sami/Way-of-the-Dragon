@@ -66,7 +66,7 @@ const ManageClassCard = ({ refetch, item }) => {
                 <p>Instructor Email: {instructorEmail}</p>
                 <p>Available seats: {totalSeats - enrolledStudents}</p>
                 <p>Price: {price}$</p>
-                <div className="justify-end btn-group">
+                <div className="justify-end join">
                     <button onClick={() => handleApprove(item)} disabled={!isPending} className="btn btn-primary btn-sm">Approve</button>
                     <button onClick={() => handleDeny(item)} disabled={!isPending} className="btn btn-primary btn-sm">Deny</button>
                     <button disabled={!isDenied} className="btn btn-sm p-0 btn-primary"><Link to={`/dashboard/admin/update/${item._id}`} className="btn btn-sm btn-ghost hover:bg-none">SendFeedback</Link></button>

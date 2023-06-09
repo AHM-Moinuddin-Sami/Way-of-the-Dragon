@@ -1,30 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const MyClasses = () => {
 
     const { user } = useAuth();
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
-
-    const [errorMessage, setErrorMessage] = useState("");
-
     const [axiosSecure] = useAxiosSecure();
-    const { data: classes = [], isLoading: loading, refetch } = useQuery({
-        queryKey: ['classes'],
+    const { data: myClasses = []} = useQuery({
+        queryKey: ['myClasses'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/classes/all/${user.email}`)
+            const res = await axiosSecure.get(`/classes/instructor/all/${user.email}`)
             return res.data;
         }
     })
-
-    const onSubmit = data => {
-        console.log(data);
-    }
 
     return (
         <div>
@@ -47,7 +37,7 @@ const MyClasses = () => {
                     </thead>
                     <tbody>
                         {
-                            classes.map((item, index) => 
+                            myClasses.map((item, index) => 
                             <tr className="w-full text-center overflow-hidden" key={item._id}>
                                 <td>
                                     {index + 1}

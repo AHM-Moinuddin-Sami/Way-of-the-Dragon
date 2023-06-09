@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
 const PopularClasses = () => {
-    const { data: classes = [], isLoading: loading } = useQuery({
-        queryKey: ['classes'],
+    const { data: popularClasses = [], isLoading: loading } = useQuery({
+        queryKey: ['popularClasses'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/classes/popular');
             return res.json();
@@ -12,7 +12,7 @@ const PopularClasses = () => {
     return (
         <div>
             {
-                classes.map(item => <div key={item._id}>{item.name}</div>)
+                popularClasses.map(item => <div key={item._id}>{item.name}</div>)
             }
         </div>
     );
