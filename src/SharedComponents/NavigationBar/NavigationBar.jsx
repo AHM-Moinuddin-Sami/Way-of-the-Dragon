@@ -1,11 +1,11 @@
 // https://i.ibb.co/MVgkP8Z/400129-removebg-preview.png
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Components/Providers/AuthProvider";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
-import { themeChange } from 'theme-change'
+import useStudent from "../../Hooks/useStudent";
 
 const NavigationBar = () => {
 
@@ -13,6 +13,7 @@ const NavigationBar = () => {
 
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
+    const [isStudent] = useStudent();
 
 
     const handleImageError = event => {
@@ -55,7 +56,7 @@ const NavigationBar = () => {
                     }
 
                     {
-                        (!isAdmin && !isInstructor) && <li><Link to={"/dashboard/student"}>Dashboard</Link></li>
+                        isStudent && <li><Link to={"/dashboard/student"}>Dashboard</Link></li>
                     }
                     <li><Link to={"/blog"}>Blogs</Link></li>
                 </ul>

@@ -32,7 +32,7 @@ const Register = () => {
 
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        const savedUser = { name: data.name, email: data.email, gender: data.gender, phoneNumber: data.phoneNumber, address: data.address, photo: data.photoURL }
+                        const savedUser = { name: data.name, email: data.email, gender: data.gender, phoneNumber: data.phoneNumber, address: data.address, photo: data.photoURL, status:"student" }
                         console.log(savedUser)
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
