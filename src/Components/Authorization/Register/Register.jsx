@@ -32,7 +32,7 @@ const Register = () => {
 
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        const savedUser = { name: data.name, email: data.email, gender: data.gender, phoneNumber: data.phoneNumber, address: data.address, photo: data.photoURL, status:"student" }
+                        const savedUser = { name: data.name, email: data.email, gender: data.gender, phoneNumber: data.phoneNumber, address: data.address, photo: data.photoURL, role: "student" }
                         console.log(savedUser)
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
@@ -42,9 +42,9 @@ const Register = () => {
                             body: JSON.stringify(savedUser)
                         })
                             .then(res => res.json())
-                            .then(data => {
-                                console.log(data);
-                                if (data.insertedId) {
+                            .then(item => {
+                                console.log(item);
+                                if (item.insertedId) {
                                     reset();
                                     Swal.fire({
                                         icon: 'success',
