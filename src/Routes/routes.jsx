@@ -16,6 +16,7 @@ import InstructorRoute from "./InstructorRoute";
 import PrivateRoute from "./PrivateRoute";
 import Instructors from "../Components/Instructors/Instructors";
 import Classes from "../Components/Classes/Classes";
+import Feedback from "../Components/Dashboards/AdminDashboard/ManageClasses/ManageClassCard/Feedback/Feedback";
 
 const router = createBrowserRouter([
     {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
                     {
                         path: "classes",
                         element: <ManageClasses></ManageClasses>
+                    },
+                    {
+                        path:"feedback/:id",
+                        element: <Feedback></Feedback>
                     }
                 ]
             },
