@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateClass = () => {
@@ -18,7 +18,7 @@ const UpdateClass = () => {
     const { data: item = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['class'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/classes/update/${id}`)
+            const res = await axios.get(`http://localhost:5000/classes/${id}`)
             return res.data;
         }
     })

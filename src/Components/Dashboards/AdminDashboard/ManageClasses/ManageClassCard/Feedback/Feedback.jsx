@@ -16,7 +16,7 @@ const Feedback = ({ isDenied }) => {
     const { data: item = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['class'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/classes/feedback/${id}`)
+            const res = await axios.get(`http://localhost:5000/classes/${id}`)
             return res.data;
         }
     })
@@ -35,7 +35,6 @@ const Feedback = ({ isDenied }) => {
             console.log(response.data); // Response from the backend
             refetch();
             Swal.fire({
-                position: 'top-end',
                 icon: 'success',
                 title: `${item.name} feedback submitted!`,
                 showConfirmButton: false,

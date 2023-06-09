@@ -1,5 +1,5 @@
 // https://i.ibb.co/MVgkP8Z/400129-removebg-preview.png
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Components/Providers/AuthProvider";
@@ -14,7 +14,9 @@ const NavigationBar = () => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
     const [isStudent] = useStudent();
+    
 
+    console.log(useAdmin());
 
     const handleImageError = event => {
         event.target.src = "https://cdn-icons-png.flaticon.com/512/1159/1159740.png?w=826&t=st=1684510789~exp=1684511389~hmac=001c7068b857dcdf5d33ca46a56143913e082a0a3dff59fefd023af56e239687";

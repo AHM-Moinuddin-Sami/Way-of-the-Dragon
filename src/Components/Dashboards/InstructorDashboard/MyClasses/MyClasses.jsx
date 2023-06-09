@@ -47,7 +47,8 @@ const MyClasses = () => {
                     </thead>
                     <tbody>
                         {
-                            classes.map((item, index) => <tr className="w-full text-center overflow-hidden" key={item._id}>
+                            classes.map((item, index) => 
+                            <tr className="w-full text-center overflow-hidden" key={item._id}>
                                 <td>
                                     {index + 1}
                                 </td>
@@ -75,7 +76,8 @@ const MyClasses = () => {
                                 <td>
                                     <Link to={`/dashboard/instructor/update/${item._id}`}><button className="btn">Update</button></Link>
                                 </td>
-                            </tr>)
+                            </tr>
+                            )
                         }
                     </tbody>
                 </table>
