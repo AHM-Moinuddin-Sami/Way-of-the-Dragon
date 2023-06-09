@@ -57,11 +57,12 @@ const MyClasses = () => {
                                 <td>
                                     <p>{item.name}</p>
                                 </td>
-                                <td>{item.status}</td>
+                                <td className="uppercase">{item.status}</td>
                                 <td>{item.price}$</td>
                                 <td>{item.enrolledStudents}</td>
                                 <td>{item.totalSeats}</td>
-                                <td >{/* You can open the modal using ID.showModal() method */}
+                                <td >
+                                    {/* You can open the modal using ID.showModal() method */}
                                     <button className="btn" onClick={() => window.my_modal_3.showModal()}>See Feedback</button>
                                     <dialog id="my_modal_3" className="modal">
                                         <form method="dialog" className="modal-box">
@@ -69,71 +70,10 @@ const MyClasses = () => {
                                             <h3 className="font-bold text-lg">Admin Feedback</h3>
                                             <p className="py-4">{item.feedback}</p>
                                         </form>
-                                    </dialog></td>
+                                    </dialog>
+                                </td>
                                 <td>
-                                    <Link><button className="btn">Update</button></Link>
-                                    {/* You can open the modal using ID.showModal() method */}
-                                    {/* <button className="btn" onClick={() => window.my_modal_4.showModal()}>update</button>
-                                    <dialog id="my_modal_4" className="modal">
-                                        <form method="dialog" onSubmit={handleSubmit(onSubmit)} className="form-control modal-box">
-
-                                            <label className="">
-                                                <span className="">Class Name*</span>
-                                            </label>
-                                            <input className="rounded input-bordered input" {...register("className", { required: true })} />
-                                            {errors.className && <span className="text-red-600">Name is required</span>}
-
-                                            <label className="">
-                                                <span className="">Class Image*</span>
-                                            </label>
-                                            <input className="rounded input-bordered input" {...register("photoURL", { required: true })} />
-                                            {errors.photoURL && <span className="text-red-600">Class photo is required.</span>}
-
-                                            <label className="">
-                                                <span className="">Instructor Name*</span>
-                                            </label>
-                                            <input defaultValue={user.displayName} placeholder={user.displayName} disabled={true} className="rounded input-bordered input" {...register("instructorName")} />
-                                            {errors.instructorName && <span className="text-red-600">Name is required</span>}
-
-                                            <label className="">
-                                                <span className="">Instructor Email*</span>
-                                            </label>
-                                            <input defaultValue={user.email} placeholder={user.email} disabled={true} className="rounded input-bordered input" {...register("instructorEmail")} />
-                                            {errors.instructorEmail && <span className="text-red-600">This field is required.</span>}
-
-                                            <label>Available Seats</label>
-                                            <input className="rounded input-bordered input" type="text" inputMode="numeric" {...register("availableSeats", {
-                                                required: true,
-                                                pattern: {
-                                                    value: /^[0-9]*$/,
-                                                    message: 'Please enter a valid number',
-                                                },
-                                            })} />
-                                            {errors.availableSeats && <span className="text-red-600">{errors.availableSeats.message}</span>}
-
-                                            <label>Price</label>
-                                            <input className="rounded input-bordered input" {...register("price", {
-                                                required: true,
-                                                pattern: {
-                                                    value: /^[0-9]*$/,
-                                                    message: 'Please enter a valid number',
-                                                },
-                                            })} />
-                                            {errors.price && <span className="text-red-600">{errors.price.message}</span>}
-
-                                            <div className="">
-                                                <button type='submit' className="btn mt-3">Add Class</button>
-                                                <button className="btn mt-3">Close</button>
-                                            </div>
-                                            {
-                                                errorMessage &&
-                                                <h3 className='text-red-500'>{errorMessage}</h3>
-                                            }
-
-                                        </form>
-                                    </dialog> */}
-
-                                    {/* You can open the modal using ID.showModal() method */}
+                                    <Link to={`/dashboard/instructor/update/${item._id}`}><button className="btn">Update</button></Link>
                                 </td>
                             </tr>)
                         }

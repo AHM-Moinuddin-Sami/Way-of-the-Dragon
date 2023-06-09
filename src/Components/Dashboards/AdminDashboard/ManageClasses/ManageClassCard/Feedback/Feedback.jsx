@@ -5,16 +5,18 @@ import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Feedback = ({ isDenied }) => {
-    const id = useParams();
+    const { id } = useParams();
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
     const navigate = useNavigate();
     // console.log(item._id);
-    console.log(id.id);
+    console.log(id);
 
     const { data: item = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['class'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/classes/feedback/${id.id}`)
+            const res = await axios.get(`http://localhost:5000/classes/feedback/${id}`)
             return res.data;
         }
     })
@@ -25,7 +27,7 @@ const Feedback = ({ isDenied }) => {
         const feedback = data.feedback;
         try {
             const response = await axios.patch(
-                `http://localhost:5000/classes/feedback/${id.id}`,
+                `http://localhost:5000/classes/feedback/${id}`,
                 {
                     feedback: feedback,
                 }
@@ -44,6 +46,8 @@ const Feedback = ({ isDenied }) => {
             console.error(error);
         }
     };
+
+
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="text-center">
             <h3 className="font-bold text-lg">Write your feedback here</h3>

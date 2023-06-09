@@ -56,30 +56,6 @@ const ManageClassCard = ({ refetch, item }) => {
             })
     }
 
-    // const onSubmit = async (data) => {
-    //     const feedback = data.feedback;
-    //     try {
-    //         const response = await axios.patch(
-    //             `http://localhost:5000/classes/feedback/${item._id}`,
-    //             {
-    //                 feedback: feedback,
-    //             }
-    //         );
-    //         console.log(response.data); // Response from the backend
-    //         refetch();
-    //         Swal.fire({
-    //             position: 'top-end',
-    //             icon: 'success',
-    //             title: `${item.name} feedback submitted!`,
-    //             showConfirmButton: false,
-    //             timer: 1500
-    //         });
-    //         setSelectedItem(null); // Reset the selected item after submission
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
-
     return (
         <div className="card lg:card-side bg-slate-400 text-black shadow-xl">
             <figure><img className="ml-2" src={image} alt="Avatar" /></figure>
@@ -93,13 +69,7 @@ const ManageClassCard = ({ refetch, item }) => {
                 <div className="justify-end btn-group">
                     <button onClick={() => handleApprove(item)} disabled={!isPending} className="btn btn-primary btn-sm">Approve</button>
                     <button onClick={() => handleDeny(item)} disabled={!isPending} className="btn btn-primary btn-sm">Deny</button>
-                    {/* <button onClick={() => handleFeedback(item)} disabled={!isDenied} className="btn btn-primary btn-sm">Send Feedback</button> */}
-                    {/* <Feedback
-                        item={item}
-                        isDenied={isDenied}
-                        refetch={refetch}
-                    ></Feedback> */}
-                    <button disabled={!isDenied} className="btn btn-sm p-0 btn-primary"><Link to={`/dashboard/admin/feedback/${item._id}`} className="btn btn-sm btn-ghost hover:bg-none">SendFeedback</Link></button>
+                    <button disabled={!isDenied} className="btn btn-sm p-0 btn-primary"><Link to={`/dashboard/admin/update/${item._id}`} className="btn btn-sm btn-ghost hover:bg-none">SendFeedback</Link></button>
                 </div>
 
             </div>

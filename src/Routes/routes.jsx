@@ -17,6 +17,8 @@ import PrivateRoute from "./PrivateRoute";
 import Instructors from "../Components/Instructors/Instructors";
 import Classes from "../Components/Classes/Classes";
 import Feedback from "../Components/Dashboards/AdminDashboard/ManageClasses/ManageClassCard/Feedback/Feedback";
+import UpdateClass from "../Components/Dashboards/InstructorDashboard/MyClasses/UpdateClass/UpdateClass";
+import StudentDashboard from "../Layouts/StudentDashboard";
 
 const router = createBrowserRouter([
     {
@@ -60,7 +62,7 @@ const router = createBrowserRouter([
                         element: <ManageClasses></ManageClasses>
                     },
                     {
-                        path:"feedback/:id",
+                        path: "feedback/:id",
                         element: <Feedback></Feedback>
                     }
                 ]
@@ -80,12 +82,16 @@ const router = createBrowserRouter([
                     {
                         path: "myclasses",
                         element: <MyClasses></MyClasses>
+                    },
+                    {
+                        path: "update/:id",
+                        element: <UpdateClass></UpdateClass>
                     }
                 ]
             },
             {
                 path: "dashboard/student",
-                element: <PrivateRoute></PrivateRoute>,
+                element: <PrivateRoute><StudentDashboard></StudentDashboard></PrivateRoute>,
                 children: [
                     {
                         path: "",
