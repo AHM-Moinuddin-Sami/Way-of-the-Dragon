@@ -95,7 +95,7 @@ const SelectedClasses = () => {
                                 <td>{item.price}$</td>
                                 <td className="join join-vertical">
                                     <Link
-                                        to={`/dashboard/student/payment`}
+                                        to={`/dashboard/student/payment/${item._id}`}
                                         className="btn btn-success hover:bg-none join-item"
                                     >
                                         pay</Link>

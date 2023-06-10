@@ -5,7 +5,7 @@ import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 
-const CheckoutForm = ({ cart, price }) => {
+const CheckoutForm = ({ paymentClass, price }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useAuth();
@@ -51,7 +51,6 @@ const CheckoutForm = ({ cart, price }) => {
         }
         else {
             setCardError('');
-            // console.log('payment method', paymentMethod)
         }
 
         setProcessing(true)
@@ -78,24 +77,17 @@ const CheckoutForm = ({ cart, price }) => {
         if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
             // save payment information to the server
-            // const payment = {
-            //     email: user?.email,
-            //     transactionId: paymentIntent.id,
-            //     price,
-            //     date: new Date(),
-            //     quantity: cart.length,
-            //     cartItems: cart.map(item => item._id),
-            //     menuItems: cart.map(item => item.menuItemId),
-            //     status: 'service pending',
-            //     itemNames: cart.map(item => item.name)
-            // }
-            // axiosSecure.post('/payments', payment)
-            //     .then(res => {
-            //         console.log(res.data);
-            //         if (res.data.result.insertedId) {
-            //             // display confirm
-            //         }
-            //     })
+            const payload = {
+                id : paymentClass._id,
+                email:user.email
+            };
+            axiosSecure.post('/payments', payload)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.result.insertResult) {
+                        // display confirm
+                    }
+                })
         }
 
 
