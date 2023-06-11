@@ -10,10 +10,12 @@ const StudentDashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                <ul className="menu p-4 w-80 gap-2 h-full bg-base-200 text-base-content">
+                    <h3 className="mx-auto text-3xl">Student Options</h3>
+                    <hr />
                     {/* Sidebar content here */}
-                    <li><Link to={"/dashboard/student/selected"}>My Selected Classes</Link></li>
-                    <li><Link to={"/dashboard/student/enrolled"}>My Enrolled Classes</Link></li>
+                    <li className="w-full text-xl"><Link to={"/dashboard/student/selected"}>My Selected Classes</Link></li>
+                    <li className="w-full text-xl"><Link to={"/dashboard/student/enrolled"}>My Enrolled Classes</Link></li>
                 </ul>
 
             </div>

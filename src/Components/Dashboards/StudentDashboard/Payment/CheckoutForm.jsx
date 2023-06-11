@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckoutForm = ({ paymentClass, price }) => {
@@ -14,6 +16,8 @@ const CheckoutForm = ({ paymentClass, price }) => {
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
+    const navigate = useNavigate();
+    const [alreadyEnrolled, setAlreadyEnrolled] = useState(false);
 
     useEffect(() => {
         if (price > 0) {
@@ -53,41 +57,90 @@ const CheckoutForm = ({ paymentClass, price }) => {
             setCardError('');
         }
 
-        setProcessing(true)
+        const payloadPaymentCheck = {
+            id: paymentClass._id,
+            email: user.email
+        };
 
-        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
-            clientSecret,
-            {
-                payment_method: {
-                    card: card,
-                    billing_details: {
-                        email: user?.email || 'unknown',
-                        name: user?.displayName || 'anonymous'
+        axiosSecure.post('/payments/check', payloadPaymentCheck)
+            .then(res => {
+                console.log(res.data.error);
+                if (res.data.error) {
+                    // display confirm
+                    console.log('inside the if');
+                    setAlreadyEnrolled(true);
+                    Swal.fire({
+                        icon: 'error',
+                        title: `${res.data.message}`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate(-1);
+                    // return;
+                }
+            })
+
+        if (alreadyEnrolled) {
+            setProcessing(true)
+
+            const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+                clientSecret,
+                {
+                    payment_method: {
+                        card: card,
+                        billing_details: {
+                            email: user?.email || 'unknown',
+                            name: user?.displayName || 'anonymous'
+                        },
                     },
                 },
-            },
-        );
+            );
 
-        if (confirmError) {
-            console.log(confirmError);
-        }
+            if (confirmError) {
+                console.log(confirmError);
+            }
 
-        console.log('payment intent', paymentIntent)
-        setProcessing(false)
-        if (paymentIntent.status === 'succeeded') {
-            setTransactionId(paymentIntent.id);
-            // save payment information to the server
-            const payload = {
-                id : paymentClass._id,
-                email:user.email
-            };
-            axiosSecure.post('/payments', payload)
-                .then(res => {
-                    console.log(res.data);
-                    if (res.data.result.insertResult) {
-                        // display confirm
-                    }
-                })
+            console.log('payment intent', paymentIntent)
+            setProcessing(false)
+            if (paymentIntent.status === 'succeeded') {
+                setTransactionId(paymentIntent.id);
+                console.log("PAYMENT SUCCEEDED!!!");
+                // save payment information to the server
+                // const enrolledPayload = {
+
+                // };
+                const payloadPaymentInsert = {
+                    id: paymentClass._id,
+                    email: user.email,
+                    name: user.displayName,
+                    price: price,
+                    className: paymentClass.name,
+                    transactionId: paymentIntent.id,
+                    date: new Date()
+                };
+                axiosSecure.post('/payments', payloadPaymentInsert)
+                    .then(res => {
+                        console.log(res.data);
+
+                        if (res.data.docInsertResult.modifiedCount > 0 && res.data.deleteResult.modifiedCount > 0 && res.data.payloadPaymentInsert) {
+                            // display confirm
+                            Swal.fire({
+                                icon: 'success',
+                                title: `Payment complete for ${paymentClass.name}`,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                        else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: `Error regarding payment for ${paymentClass.name}`,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    })
+            }
         }
 
 

@@ -1,7 +1,9 @@
+import SectionTitle from "../../../SharedComponents/Section Title/SectionTitle";
 
 const PopularInstructors = () => {
     return (
         <div>
+            <SectionTitle title={"Popular Instructors"}></SectionTitle>
             <button className="btn" onClick={() => window.my_modal_5.showModal()}>open modal</button>
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                 <form method="dialog" className="modal-box">

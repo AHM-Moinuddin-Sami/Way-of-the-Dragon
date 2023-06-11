@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'TitleFont';
+    src: url('../../../public/YamatoJapan.otf') format('opentype');
+}
+
+.site-title{
+    font-family: 'TitleFont', sans-serif;
+}

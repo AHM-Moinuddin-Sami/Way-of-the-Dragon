@@ -32,7 +32,7 @@ const SelectedClasses = () => {
     const filteredClasses = items.filter(item => selectedClasses.includes(item._id))
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <div className="h-[100vh] flex justify-center items-center">Loading...</div>;
     }
 
 

@@ -6,9 +6,10 @@ import { AuthContext } from "../../Components/Providers/AuthProvider";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
 import useStudent from "../../Hooks/useStudent";
+import "./NavigationBar.css"
 
 const NavigationBar = () => {
-    
+
     const [theme, setTheme] = useState('light');
     const toggleTheme = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -20,9 +21,12 @@ const NavigationBar = () => {
 
     const { user, logOut } = useContext(AuthContext);
 
-    const [isAdmin] = useAdmin();
-    const [isInstructor] = useInstructor();
-    const [isStudent] = useStudent();
+    const [isAdmin, isAdminLoading] = useAdmin();
+    const [isInstructor, isInstructorLoading] = useInstructor();
+    const [isStudent, isStudentLoading] = useStudent();
+
+    if (isAdminLoading || isInstructorLoading || isStudentLoading)
+        return<div className="h-[100vh] flex justify-center items-center">Loading...</div>;
 
     const handleImageError = event => {
         event.target.src = "https://cdn-icons-png.flaticon.com/512/1159/1159740.png?w=826&t=st=1684510789~exp=1684511389~hmac=001c7068b857dcdf5d33ca46a56143913e082a0a3dff59fefd023af56e239687";
@@ -47,7 +51,7 @@ const NavigationBar = () => {
                         <li><Link to={"/blog"}>Blogs</Link></li>
                     </ul>
                 </div>
-                <Link className="md:text-3xl text-xl font-bold flex items-center"><img className="h-10 w-10 md:h-14 md:w-14" src="https://i.ibb.co/MVgkP8Z/400129-removebg-preview.png" alt="" /> <span>Way of the Dragon</span></Link>
+                <Link className="md:text-3xl text-xl font-bold flex items-center"><img className="h-10 w-10 md:h-14 md:w-14" src="https://i.ibb.co/MVgkP8Z/400129-removebg-preview.png" alt="" /> <span className="site-title">Way of the Dragon</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

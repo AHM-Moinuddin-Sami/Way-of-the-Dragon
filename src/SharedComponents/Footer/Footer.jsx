@@ -3,9 +3,9 @@ const Footer = () => {
     return (
         <footer className="footer footer-center md:p-10 bg-gradient-to-b from-transparent via-orange-600 to-red-800 text-primary-content">
             <div>
-                <img className="h-20 w-20" src="https://cdn1.iconfinder.com/data/icons/game-design-butterscotch-vol-1/256/Dice_Board_Game-512.png" alt="" />
-                <p className="font-bold">
-                    Playtopia
+                <img className="h-20 w-20" src="https://i.ibb.co/MVgkP8Z/400129-removebg-preview.png" alt="" />
+                <p className="site-title text-2xl">
+                    Way of the Dragon
                 </p>
                 <p>Contact no: 0123123123 Email: query@playtopia.org</p>
                 <p>Address: 123 Road, Town City, Big City, Country</p>

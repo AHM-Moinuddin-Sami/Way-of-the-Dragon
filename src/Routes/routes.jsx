@@ -23,6 +23,7 @@ import StudentDashboardHome from "../Components/Dashboards/StudentDashboard/Stud
 import EnrolledClasses from "../Components/Dashboards/StudentDashboard/EnrolledClasses/EnrolledClasses";
 import Payment from "../Components/Dashboards/StudentDashboard/Payment/Payment";
 import SelectedClasses from "../Components/Dashboards/StudentDashboard/SelectedClasses/SelectedClasses";
+import ErrorPage from "../SharedComponents/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -117,6 +118,10 @@ const router = createBrowserRouter([
                 ]
             }
         ]
+    },
+    {
+        path: '*',
+        element:<ErrorPage></ErrorPage>
     }
 ]);
 

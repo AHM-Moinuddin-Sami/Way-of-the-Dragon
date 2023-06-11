@@ -10,10 +10,11 @@ const InstructorDashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                <ul className="menu p-4 w-80 h-full gap-2 bg-base-200 text-base-content">
+                    <h3 className="mx-auto text-3xl">Instructor Options</h3>
                     {/* Sidebar content here */}
-                    <li><Link to={"/dashboard/instructor/addclass"}>Add A Class</Link></li>
-                    <li><Link to={"/dashboard/instructor/myclasses"}>My Classes</Link></li>
+                    <li className="w-full text-xl"><Link to={"/dashboard/instructor/addclass"}>Add A Class</Link></li>
+                    <li className="w-full text-xl"><Link to={"/dashboard/instructor/myclasses"}>My Classes</Link></li>
                 </ul>
 
             </div>

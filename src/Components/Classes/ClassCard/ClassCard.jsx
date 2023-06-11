@@ -62,7 +62,7 @@ const ClassCard = ({ id, name, photo, instructor, available, price }) => {
                 <p>{available}</p>
                 <p>{price}$</p>
                 <div className="card-actions justify-end">
-                    <button disabled={isAdmin || isInstructor} onClick={() => selectClass()} className={`btn btn-primary`}>Select</button>
+                    <button disabled={isAdmin || isInstructor || available === 0} onClick={() => selectClass()} className={`btn btn-primary`}>Select</button>
                 </div>
             </div>
         </div>
