@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: 'SectionFont';
-    src: url('../../../public/Hirokawa.otf') format('opentype');
+    src: url('/Hirokawa.otf') format('opentype');
 }
 
 .section-title {

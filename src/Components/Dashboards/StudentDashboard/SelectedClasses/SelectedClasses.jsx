@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import SectionTitle from "../../../../SharedComponents/Section Title/SectionTitle";
 
 const SelectedClasses = () => {
 
@@ -61,6 +62,7 @@ const SelectedClasses = () => {
 
     return (
         <div className="overflow-x-auto">
+            <SectionTitle title={"Selected Classes"}></SectionTitle>
             <table className="table">
                 {/* head */}
                 <thead>

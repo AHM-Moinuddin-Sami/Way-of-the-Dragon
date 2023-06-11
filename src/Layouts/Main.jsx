@@ -3,6 +3,7 @@ import NavigationBar from "../SharedComponents/NavigationBar/NavigationBar";
 import { Outlet } from "react-router-dom";
 
 const Main = () => {
+
     return (
         <div>
             <NavigationBar></NavigationBar>
