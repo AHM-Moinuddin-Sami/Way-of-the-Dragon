@@ -9,9 +9,11 @@ const ErrorPage = () => {
                 <div className="card-actions justify-end">
                     <Link to={`/`}><button className="btn btn-primary">Return to Homepage</button></Link>
                 </div>
-            </div>
+            </div>            
         </div>
     );
 };
 
 export default ErrorPage;
+
+

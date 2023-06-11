@@ -16,8 +16,10 @@ const AdminDashboardHome = () => {
         }
     })
 
+    console.log(users);
+
     const instructors = users.filter(user => user.role === 'instructor');
-    const students = users.filter(user => user.role === 'students');
+    const students = users.filter(user => user.role === 'student');
     
     return (
         <div>

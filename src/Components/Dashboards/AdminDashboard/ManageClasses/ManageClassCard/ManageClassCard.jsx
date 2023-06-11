@@ -57,8 +57,8 @@ const ManageClassCard = ({ refetch, item }) => {
     }
 
     return (
-        <div className="card lg:card-side bg-slate-400 text-black shadow-xl">
-            <figure><img className="ml-2" src={image} alt="Avatar" /></figure>
+        <div className="card bg-slate-400 text-black shadow-xl">
+            <figure className=""><img className="object-cover h-64" src={image} alt="Avatar" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
                 <p>Status: <span className="uppercase">{status}</span></p>

@@ -15,18 +15,20 @@ const Instructors = () => {
     console.log(instructors);
 
     return (
-        <div>
+        <div className="min-h-screen">
             <SectionTitle title={"All Instructors"}></SectionTitle>
-            {
-                instructors.map(instructor =>
-                    <InstructorCard
-                        key={instructor._id}
-                        name={instructor.name}
-                        photo={instructor.photo}
-                        phone={instructor.phoneNumber}
-                        email={instructor.email}
-                    ></InstructorCard>)
-            }
+            <div className="grid grid-cols-4 gap-3">
+                {
+                    instructors.map(instructor =>
+                        <InstructorCard
+                            key={instructor._id}
+                            name={instructor.name}
+                            photo={instructor.photo}
+                            phone={instructor.phoneNumber}
+                            email={instructor.email}
+                        ></InstructorCard>)
+                }
+            </div>
         </div>
     );
 };

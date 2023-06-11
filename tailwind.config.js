@@ -9,7 +9,28 @@ export default {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ['light', 'dark'],
+    themes: [
+      {
+        dark: {
+          ...require("daisyui/src/theming/themes")["[data-theme=dark]"],
+          "primary": "#d01c1f",
+          "primary-focus": "#880808",
+          ".navbar":{
+            "background-color":"black"
+          }
+        },
+        light: {
+          ...require("daisyui/src/theming/themes")["[data-theme=light]"],
+          "primary": "#71797E",
+          "primary-focus": "gray",
+          ".navbar":{
+            "background-color":"#d01c1f"
+          }
+        },
+      },
+      // 'light',
+      // 'dark'
+    ],
   },
 }
 

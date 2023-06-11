@@ -26,7 +26,7 @@ const ClassCard = ({ id, name, photo, instructor, available, price }) => {
                     `http://localhost:5000/users/student/select/${user.email}`,
                     {
                         id: id,
-                        payment:"unpaid"
+                        payment: "unpaid"
                     }
                 );
                 console.log(response.data); // Response from the backend
@@ -55,12 +55,12 @@ const ClassCard = ({ id, name, photo, instructor, available, price }) => {
 
     return (
         <div className="card lg:card-side bg-base-100 shadow-xl">
-            <figure><img src={photo} alt="Album" /></figure>
+            <img className="w-1/2 object-cover" src={photo} alt="Album" />
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
-                <p>{instructor}</p>
-                <p>{available}</p>
-                <p>{price}$</p>
+                <p>Instructor: {instructor}</p>
+                <p>Available Seats: {available}</p>
+                <p>Price: {price}$</p>
                 <div className="card-actions justify-end">
                     <button disabled={isAdmin || isInstructor || available === 0} onClick={() => selectClass()} className={`btn btn-primary`}>Select</button>
                 </div>

@@ -18,28 +18,11 @@ const NavigationBar = () => {
     const [isInstructor] = useInstructor();
     const [isStudent] = useStudent();
     const { user, logOut } = useContext(AuthContext);
-    const [loadingComplete, setLoadingComplete] = useState(false);
 
 
     const toggleTheme = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
     };
-
-    // useEffect(() => {
-    //     setLoadingComplete(false); // Reset the loading state when the component is mounted
-
-    //     if (isAdminLoading || isInstructorLoading || isStudentLoading) {
-    //         // Simulating loading completion after 3 seconds
-    //         const timer = setTimeout(() => {
-    //             setLoadingComplete(true);
-    //         }, 3000);
-
-    //         return () => clearTimeout(timer); // Clean up the timer when the component unmounts
-    //     }
-
-    //     return undefined;
-    // }, [isAdminLoading, isInstructorLoading, isStudentLoading]);
-
 
     useEffect(() => {
         const image = imageRef.current;
@@ -56,24 +39,6 @@ const NavigationBar = () => {
             animation.pause();
         };
     }, [])
-
-    useEffect(() => {
-        if (loadingComplete) {
-            const image = imageRef.current;
-            const animation = anime({
-                targets: image,
-                rotate: "1turn",
-                duration: 8000,
-                easing: "linear",
-                loop: true,
-            });
-
-            return () => {
-                animation.pause();
-            };
-        }
-    }, [loadingComplete]);
-
 
     useEffect(() => {
 
