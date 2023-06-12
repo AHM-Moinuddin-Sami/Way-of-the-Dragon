@@ -7,7 +7,7 @@ const UserCard = ({ refetch, userItem }) => {
     const { user } = useAuth();
 
     const handleMakeAdmin = sentUser => {
-        fetch(`http://localhost:5000/users/admin/${sentUser._id}`, {
+        fetch(`https://way-of-the-dragon-server.vercel.app/users/admin/${sentUser._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -25,7 +25,7 @@ const UserCard = ({ refetch, userItem }) => {
     }
 
     const handleMakeInstructor = sentUser => {
-        fetch(`http://localhost:5000/users/instructor/${sentUser._id}`, {
+        fetch(`https://way-of-the-dragon-server.vercel.app/users/instructor/${sentUser._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

@@ -14,12 +14,10 @@ const Payment = () => {
     const { data: paymentClass = [] } = useQuery({
         queryKey: ['paymentClass'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/classes/all/${id}`)
+            const res = await axios.get(`https://way-of-the-dragon-server.vercel.app/classes/all/${id}`)
             return res.data;
         }
     })
-
-    console.log(paymentClass);
 
     return (
         <div>

@@ -13,9 +13,9 @@ const NavigationBar = () => {
     const [theme, setTheme] = useState("light");
     const imageRef = useRef(null);
 
+    const [isStudent] = useStudent();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    const [isStudent] = useStudent();
     const { user, logOut } = useContext(AuthContext);
 
 

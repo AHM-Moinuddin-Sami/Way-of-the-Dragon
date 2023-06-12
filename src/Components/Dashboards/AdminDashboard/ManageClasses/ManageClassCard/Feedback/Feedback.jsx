@@ -14,7 +14,7 @@ const Feedback = ({ isDenied }) => {
     const { data: feedbackClass = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['feedbackClass'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/classes/all/${id}`)
+            const res = await axios.get(`https://way-of-the-dragon-server.vercel.app/classes/all/${id}`)
             return res.data;
         }
     })
@@ -23,7 +23,7 @@ const Feedback = ({ isDenied }) => {
         const feedback = data.feedback;
         try {
             const response = await axios.patch(
-                `http://localhost:5000/classes/feedback/${id}`,
+                `https://way-of-the-dragon-server.vercel.app/classes/feedback/${id}`,
                 {
                     feedback: feedback,
                 }

@@ -7,11 +7,10 @@ const Classes = () => {
     const { data: classes = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/classes');
+            const res = await fetch('https://way-of-the-dragon-server.vercel.app/classes');
             return res.json();
         }
     })
-
 
     return (
         <div className=' md:w-10/12 min-h-[80vh] mx-auto'>

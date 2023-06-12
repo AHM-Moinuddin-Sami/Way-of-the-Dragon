@@ -12,7 +12,7 @@ const SelectedClasses = () => {
     const { data: selectedClasses = [], isLoading, refetch } = useQuery({
         queryKey: ['selectedClasses'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`http://localhost:5000/users/student/select/${user.email}`)
+            const res = await axiosSecure.get(`https://way-of-the-dragon-server.vercel.app/users/student/select/${user.email}`)
             return res.data;
         }
     })
@@ -20,14 +20,10 @@ const SelectedClasses = () => {
     const { data: items = [] } = useQuery({
         queryKey: ['items'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/classes`)
+            const res = await axios.get(`https://way-of-the-dragon-server.vercel.app/classes`)
             return res.data;
         }
     })
-
-    console.log(items);
-
-    console.log(selectedClasses);
 
     const filteredClasses = items.filter(item => selectedClasses.includes(item._id))
 
@@ -37,10 +33,9 @@ const SelectedClasses = () => {
 
 
     const handleDelete = async (id, name) => {
-        console.log(id, name)
         try {
             const response = await axios.patch(
-                `http://localhost:5000/users/student/select/delete/${user.email}`,
+                `https://way-of-the-dragon-server.vercel.app/users/student/select/delete/${user.email}`,
                 {
                     id: id
                 }

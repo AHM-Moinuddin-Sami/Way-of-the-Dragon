@@ -16,7 +16,7 @@ const UpdateClass = () => {
     const { data: item = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['item'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/classes/all/${id}`)
+            const res = await axios.get(`https://way-of-the-dragon-server.vercel.app/classes/all/${id}`)
             return res.data;
         }
     })
@@ -33,7 +33,7 @@ const UpdateClass = () => {
     const onSubmit = async (data) => {
         try {
             const response = await axios.patch(
-                `http://localhost:5000/classes/update/${id}`,
+                `https://way-of-the-dragon-server.vercel.app/classes/update/${id}`,
                 {
                     name: data.className,
                     totalSeats: data.availableSeats,

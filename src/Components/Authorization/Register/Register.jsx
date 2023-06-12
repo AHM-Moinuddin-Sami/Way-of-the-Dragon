@@ -29,12 +29,11 @@ const Register = () => {
             .then(result => {
 
                 const loggedUser = result.user;
-                console.log(loggedUser);
 
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         const savedUser = { name: data.name, email: data.email, gender: data.gender, phoneNumber: data.phoneNumber, address: data.address, photo: data.photoURL, role: "student" }
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://way-of-the-dragon-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -43,7 +42,6 @@ const Register = () => {
                         })
                             .then(res => res.json())
                             .then(item => {
-                                console.log(item);
                                 if (item.insertedId) {
                                     reset();
                                     Swal.fire({

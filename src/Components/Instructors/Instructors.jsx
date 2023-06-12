@@ -8,12 +8,10 @@ const Instructors = () => {
     const { data: instructors = [], isLoading: loading } = useQuery({
         queryKey: ['allInstructors'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/instructors');
+            const res = await fetch('https://way-of-the-dragon-server.vercel.app/instructors');
             return res.json();
         }
     })
-
-    console.log(instructors);
 
     return (
         <div className="md:w-10/12 min-h-[80vh] mx-auto">

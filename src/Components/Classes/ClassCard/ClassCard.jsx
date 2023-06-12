@@ -25,7 +25,6 @@ const ClassCard = ({ id, name, photo, instructor, available, price }) => {
             });
         }
         else {
-            console.log(user);
             await axiosSecure
                 .post("/payments/check", {
                     id: id,
@@ -47,7 +46,7 @@ const ClassCard = ({ id, name, photo, instructor, available, price }) => {
             if (!enrollmentStatus) {
                 try {
                     const response = await axios.patch(
-                        `http://localhost:5000/users/student/select/${user.email}`,
+                        `https://way-of-the-dragon-server.vercel.app/users/student/select/${user.email}`,
                         {
                             id: id,
                             payment: "unpaid"

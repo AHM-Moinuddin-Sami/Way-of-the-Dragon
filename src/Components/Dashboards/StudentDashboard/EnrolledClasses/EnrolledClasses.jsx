@@ -17,12 +17,10 @@ const EnrolledClasses = () => {
         },
     });
 
-    console.log(enrolledClasses);
-
     const { data: items = [] } = useQuery({
         queryKey: ["items"],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/classes`);
+            const res = await axios.get(`https://way-of-the-dragon-server.vercel.app/classes`);
             return res.data;
         },
     });

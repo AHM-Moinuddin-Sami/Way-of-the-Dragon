@@ -50,7 +50,7 @@ const AddAClass = () => {
 
     const postItem = async (saveClass) => {
         try {
-            const response = await axiosSecure.post('http://localhost:5000/classes', saveClass);
+            const response = await axiosSecure.post('https://way-of-the-dragon-server.vercel.app/classes', saveClass);
             if (response.data.insertedId) {
                 reset();
                 Swal.fire({
@@ -70,7 +70,6 @@ const AddAClass = () => {
     }
 
     const mutation = useMutation(handleClassAddition);
-
 
     const onSubmit = data => {
         mutation.mutate(data);

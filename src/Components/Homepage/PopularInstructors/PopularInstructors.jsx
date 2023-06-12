@@ -7,7 +7,7 @@ const PopularInstructors = () => {
     const { data: popularInstructors = [], isLoading: loading } = useQuery({
         queryKey: ["popularInstructors"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/instructors/popular");
+            const res = await fetch("https://way-of-the-dragon-server.vercel.app/instructors/popular");
             return res.json();
         },
     });

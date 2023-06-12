@@ -17,7 +17,7 @@ const ManageClassCard = ({ refetch, item }) => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const handleApprove = item => {
-        fetch(`http://localhost:5000/classes/approve/${item._id}`, {
+        fetch(`https://way-of-the-dragon-server.vercel.app/classes/approve/${item._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -36,7 +36,7 @@ const ManageClassCard = ({ refetch, item }) => {
     }
 
     const handleDeny = item => {
-        fetch(`http://localhost:5000/classes/deny/${item._id}`, {
+        fetch(`https://way-of-the-dragon-server.vercel.app/classes/deny/${item._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
