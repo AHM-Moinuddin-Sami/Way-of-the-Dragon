@@ -4,6 +4,7 @@ import SectionTitle from "../../../SharedComponents/Section Title/SectionTitle";
 import { FaUsers } from "react-icons/fa";
 import { MdOutlineClass } from "react-icons/md";
 import { GiTeacher } from "react-icons/gi";
+import { Helmet } from "react-helmet-async";
 
 const AdminDashboardHome = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -20,13 +21,16 @@ const AdminDashboardHome = () => {
         }
     })
 
-    console.log(users);
-
     const instructors = users.filter(user => user.role === 'instructor');
     const students = users.filter(user => user.role === 'student');
 
     return (
         <div>
+            <Helmet>
+                <title>
+                    Admin Dashboard Home | Way of the Dragon
+                </title>
+            </Helmet>
             <SectionTitle title={"Admin Dashboard"}></SectionTitle>
             <div className="stats shadow mx-auto">
 

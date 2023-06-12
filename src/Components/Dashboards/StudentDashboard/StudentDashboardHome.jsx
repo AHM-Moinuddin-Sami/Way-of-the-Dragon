@@ -4,6 +4,7 @@ import SectionTitle from "../../../SharedComponents/Section Title/SectionTitle";
 import useAuth from "../../../Hooks/useAuth";
 import { MdOutlineAssignmentTurnedIn, MdPaid } from "react-icons/md";
 import { BiSelectMultiple } from "react-icons/bi";
+import { Helmet } from "react-helmet-async";
 
 const StudentDashboardHome = () => {
 
@@ -44,6 +45,11 @@ const StudentDashboardHome = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>
+                    Student Dashboard Home | Way of the Dragon
+                </title>
+            </Helmet>
             <SectionTitle title={"Student Dashboard"}></SectionTitle>
             <div className="stats shadow flex">
 

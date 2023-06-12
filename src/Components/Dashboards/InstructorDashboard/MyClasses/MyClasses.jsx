@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const MyClasses = () => {
 
@@ -18,6 +19,11 @@ const MyClasses = () => {
 
     return (
         <div hidden={loading}>
+            <Helmet>
+                <title>
+                    My Classes | Way of the Dragon
+                </title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

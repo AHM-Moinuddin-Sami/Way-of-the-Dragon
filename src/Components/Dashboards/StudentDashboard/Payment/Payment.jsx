@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import SectionTitle from "../../../../SharedComponents/Section Title/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Payment = () => {
@@ -21,6 +22,11 @@ const Payment = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>
+                    Payment | Way of the Dragon
+                </title>
+            </Helmet>
             <SectionTitle title={"Payment"}></SectionTitle>
             <h2 className="text-3xl text-center">Complete payment for {paymentClass.name} class</h2>
             <Elements stripe={stripePromise}>

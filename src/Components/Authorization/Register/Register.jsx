@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
 import SectionTitle from "../../../SharedComponents/Section Title/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
 
@@ -67,6 +68,11 @@ const Register = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: `url("https://i.ibb.co/K9R2TMJ/pxfuel-1.jpg")` }}>
+            <Helmet>
+                <title>
+                    Register | Way of the Dragon
+                </title>
+            </Helmet>
             <div className='mx-auto w-11/12 md:w-1/2 bg-white p-8 mt-2 rounded'>
 
                 <div className="text-black"><SectionTitle title={"Registration"}></SectionTitle></div>

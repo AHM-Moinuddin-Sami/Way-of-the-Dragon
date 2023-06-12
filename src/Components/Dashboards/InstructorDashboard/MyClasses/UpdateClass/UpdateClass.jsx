@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -58,6 +59,11 @@ const UpdateClass = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>
+                    Update Class | Way of the Dragon
+                </title>
+            </Helmet>
             <h3 className="text-center text-2xl text-primary-content">Update Class Information</h3>
             <form onSubmit={handleSubmit(onSubmit)} className="form-control">
 

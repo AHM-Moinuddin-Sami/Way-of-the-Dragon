@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import ManageClassCard from "./ManageClassCard/ManageClassCard";
+import { Helmet } from "react-helmet-async";
 
 const ManageClasses = () => {
 
@@ -15,6 +16,11 @@ const ManageClasses = () => {
 
     return (
         <div className="grid grid-cols-3 gap-4">
+            <Helmet>
+                <title>
+                    Manage Classes | Way of the Dragon
+                </title>
+            </Helmet>
             {
                 classes.map(item => <ManageClassCard
                     key={item._id}

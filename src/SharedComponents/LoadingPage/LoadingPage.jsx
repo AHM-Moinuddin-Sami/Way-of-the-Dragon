@@ -1,6 +1,7 @@
 import anime from "animejs";
 import "./loadingPage.css";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 const LoadingPage = () => {
 
@@ -23,7 +24,7 @@ const LoadingPage = () => {
     return (
         <div className="flex bg-black w-full px-auto justify-center items-center container">
             <svg
-            className="px-auto"
+                className="px-auto"
                 id="Layer_1"
                 data-name="Layer 1"
                 xmlns="http://www.w3.org/2000/svg"

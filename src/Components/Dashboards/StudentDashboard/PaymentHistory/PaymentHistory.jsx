@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import SectionTitle from "../../../../SharedComponents/Section Title/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const PaymentHistory = () => {
 
@@ -21,6 +22,11 @@ const PaymentHistory = () => {
 
     return (
         <div className="overflow-x-auto">
+            <Helmet>
+                <title>
+                    Payment History | Way of the Dragon
+                </title>
+            </Helmet>
             <SectionTitle title={"Payment History"}></SectionTitle>
             <table className="table">
                 <thead>

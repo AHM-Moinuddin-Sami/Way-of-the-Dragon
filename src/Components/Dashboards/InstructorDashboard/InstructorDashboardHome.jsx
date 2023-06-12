@@ -7,6 +7,7 @@ import { IoIosPeople } from 'react-icons/io';
 import { MdOutlinePending } from "react-icons/md";
 import { AiOutlineCheck } from "react-icons/ai";
 import { TbSum } from "react-icons/tb";
+import { Helmet } from "react-helmet-async";
 
 
 const InstructorDashboardHome = () => {
@@ -42,6 +43,11 @@ const InstructorDashboardHome = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>
+                    Instructor Dashboard Home | Way of the Dragon
+                </title>
+            </Helmet>
             <SectionTitle title={"Instructor Dashboard"}></SectionTitle>
             <div className="stats shadow">
 

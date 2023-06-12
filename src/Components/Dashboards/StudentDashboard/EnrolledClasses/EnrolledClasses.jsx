@@ -3,6 +3,7 @@ import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import axios from "axios";
 import SectionTitle from "../../../../SharedComponents/Section Title/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const EnrolledClasses = () => {
     const { user } = useAuth();
@@ -39,6 +40,11 @@ const EnrolledClasses = () => {
 
     return (
         <div className="overflow-x-auto">
+            <Helmet>
+                <title>
+                    Enrolled Classes | Way of the Dragon
+                </title>
+            </Helmet>
             <SectionTitle title={"Enrolled Classes"}></SectionTitle>
             <table className="table">
                 <thead>
