@@ -17,7 +17,7 @@ const Instructors = () => {
     return (
         <div className="min-h-screen">
             <SectionTitle title={"All Instructors"}></SectionTitle>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-3 gap-3">
                 {
                     instructors.map(instructor =>
                         <InstructorCard

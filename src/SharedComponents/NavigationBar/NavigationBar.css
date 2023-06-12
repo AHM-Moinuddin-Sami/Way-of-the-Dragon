@@ -3,6 +3,15 @@
     src: url('/YamatoJapan.otf') format('opentype');
 }
 
+@font-face {
+    font-family: 'MenuFont';
+    src: url('/ONIGASHIMA.otf') format('opentype');
+}
+
 .site-title {
     font-family: 'TitleFont', sans-serif;
+}
+
+.menu-title {
+    font-family: 'MenuFont', sans-serif;
 }

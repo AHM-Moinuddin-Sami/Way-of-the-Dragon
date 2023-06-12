@@ -7,8 +7,10 @@ const Homepage = () => {
     return (
         <div>
             <Banner></Banner>
-            <PopularClasses></PopularClasses>
-            <PopularInstructors></PopularInstructors>
+            <div className="md:w-10/12 min-h-[80vh] mx-auto">
+                <PopularClasses></PopularClasses>
+                <PopularInstructors></PopularInstructors>
+            </div>
         </div >
     );
 };

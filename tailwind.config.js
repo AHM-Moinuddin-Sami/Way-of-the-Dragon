@@ -21,7 +21,7 @@ export default {
         },
         light: {
           ...require("daisyui/src/theming/themes")["[data-theme=light]"],
-          "primary": "#71797E",
+          "primary": "black",
           "primary-focus": "gray",
           ".navbar":{
             "background-color":"#d01c1f"
