@@ -32,18 +32,18 @@ const ClassCard = ({ id, name, photo, instructor, available, price }) => {
                     email: user.email,
                 })
                 .then((res) => {
-                    console.log(res.data.error);
                     if (res.data.error) {
                         setEnrollmentStatus(true);
-                        // Swal.fire({
-                        //     icon: "error",
-                        //     title: `${res.data.message}`,
-                        //     showConfirmButton: false,
-                        //     timer: 1500,
-                        // });
+                        Swal.fire({
+                            icon: "error",
+                            title: `${res.data.message}`,
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
                     }
 
                 });
+
             if (!enrollmentStatus) {
                 try {
                     const response = await axios.patch(

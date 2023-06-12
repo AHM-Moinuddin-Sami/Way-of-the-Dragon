@@ -9,8 +9,6 @@ const UpdateClass = () => {
 
     const { id } = useParams();
 
-    console.log(id);
-
     const navigate = useNavigate();
 
     const [errorMessage, setErrorMessage] = useState("");

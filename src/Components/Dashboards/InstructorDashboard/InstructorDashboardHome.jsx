@@ -40,8 +40,6 @@ const InstructorDashboardHome = () => {
 
     })
 
-    console.log(myClasses);
-
     return (
         <div>
             <SectionTitle title={"Instructor Dashboard"}></SectionTitle>

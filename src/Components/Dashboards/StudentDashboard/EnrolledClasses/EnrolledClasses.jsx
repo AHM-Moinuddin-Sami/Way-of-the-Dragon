@@ -11,7 +11,7 @@ const EnrolledClasses = () => {
         queryKey: ["enrolledClasses"],
         queryFn: async () => {
             const res = await axiosSecure.get(
-                `http://localhost:5000/users/student/enrolled/${user.email}`
+                `users/student/enrolled/${user.email}`
             );
             return res.data;
         },

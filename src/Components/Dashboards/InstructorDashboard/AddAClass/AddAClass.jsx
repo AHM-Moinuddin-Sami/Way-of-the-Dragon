@@ -30,7 +30,6 @@ const AddAClass = () => {
 
 
     const handleClassAddition = async (item) => {
-        console.log(item);
         const formData = new FormData();
         formData.append("image", item.photoFile[0])
 
@@ -42,7 +41,6 @@ const AddAClass = () => {
             .then(imgResponse => {
                 if (imgResponse.success) {
                     const saveClass = { name: item.className, image: imgResponse.data.display_url, status: 'pending', enrolledStudents: 0, price: parseFloat(item.price), totalSeats: parseInt(item.availableSeats), instructorName: item.instructorName, instructorEmail: item.instructorEmail };
-                    console.log(saveClass);
                     postItem(saveClass);
                 }
             })
@@ -53,7 +51,6 @@ const AddAClass = () => {
     const postItem = async (saveClass) => {
         try {
             const response = await axiosSecure.post('http://localhost:5000/classes', saveClass);
-            console.log(response);
             if (response.data.insertedId) {
                 reset();
                 Swal.fire({
@@ -76,11 +73,8 @@ const AddAClass = () => {
 
 
     const onSubmit = data => {
-        // console.log(data);
         mutation.mutate(data);
     }
-
-    // console.log(user);
 
     return (
         <div>

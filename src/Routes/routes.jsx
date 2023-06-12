@@ -24,6 +24,7 @@ import EnrolledClasses from "../Components/Dashboards/StudentDashboard/EnrolledC
 import Payment from "../Components/Dashboards/StudentDashboard/Payment/Payment";
 import SelectedClasses from "../Components/Dashboards/StudentDashboard/SelectedClasses/SelectedClasses";
 import ErrorPage from "../SharedComponents/ErrorPage/ErrorPage";
+import PaymentHistory from "../Components/Dashboards/StudentDashboard/PaymentHistory/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -113,6 +114,10 @@ const router = createBrowserRouter([
                     {
                         path: "selected",
                         element: <SelectedClasses></SelectedClasses>
+                    },
+                    {
+                        path: "paymentHistory",
+                        element:<PaymentHistory></PaymentHistory>
                     }
 
                 ]

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import SectionTitle from "../../../SharedComponents/Section Title/SectionTitle";
 import useAuth from "../../../Hooks/useAuth";
-import { MdPaid } from "react-icons/md";
+import { MdOutlineAssignmentTurnedIn, MdPaid } from "react-icons/md";
 import { BiSelectMultiple } from "react-icons/bi";
 
 const StudentDashboardHome = () => {
@@ -11,7 +11,7 @@ const StudentDashboardHome = () => {
 
     const [axiosSecure] = useAxiosSecure();
 
-    const { data: classes = [], isLoading, refetch } = useQuery({
+    const { data: classes = [] } = useQuery({
         queryKey: ['dashboardClasses'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/student/all/${user.email}`)
@@ -19,8 +19,19 @@ const StudentDashboardHome = () => {
         }
     })
 
+    const { data: paymentHistory = [] } = useQuery({
+        queryKey: ["paymentHistory"],
+        queryFn: async () => {
+            const res = await axiosSecure.get(
+                `payments/history/${user.email}`
+            );
+            return res.data;
+        },
+    });
+
     let selectedClassCount = 0;
     let enrolledClassCount = 0;
+    let totalSpent = 0;
 
     if (classes.selectedClasses)
         selectedClassCount = classes.selectedClasses.length;
@@ -29,7 +40,7 @@ const StudentDashboardHome = () => {
         enrolledClassCount = classes.enrolledClasses.length;
 
 
-    console.log(selectedClassCount);
+    paymentHistory.map(payment => totalSpent += payment.price);
 
     return (
         <div>
@@ -46,10 +57,18 @@ const StudentDashboardHome = () => {
 
                 <div className="stat">
                     <div className="stat-figure text-secondary">
-                        <MdPaid></MdPaid>
+                        <MdOutlineAssignmentTurnedIn></MdOutlineAssignmentTurnedIn>
                     </div>
                     <div className="stat-title">Enrolled Classes</div>
                     <div className="stat-value">{enrolledClassCount}</div>
+                </div>
+
+                <div className="stat">
+                    <div className="stat-figure text-secondary">
+                        <MdPaid></MdPaid>
+                    </div>
+                    <div className="stat-title">Total Spent</div>
+                    <div className="stat-value">{totalSpent}$</div>
                 </div>
 
             </div>

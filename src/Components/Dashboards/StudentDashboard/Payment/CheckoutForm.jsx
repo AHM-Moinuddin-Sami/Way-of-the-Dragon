@@ -23,7 +23,6 @@ const CheckoutForm = ({ paymentClass, price }) => {
             axiosSecure
                 .post("/create-payment-intent", { price })
                 .then((res) => {
-                    console.log(res.data.clientSecret);
                     setClientSecret(res.data.clientSecret);
                 });
         }
@@ -37,10 +36,8 @@ const CheckoutForm = ({ paymentClass, price }) => {
                     email: user.email,
                 })
                 .then((res) => {
-                    console.log(res.data.error);
                     if (res.data.error) {
                         // display confirm
-                        console.log("inside the if");
                         setAlreadyEnrolled(true);
                         Swal.fire({
                             icon: "error",
@@ -100,11 +97,9 @@ const CheckoutForm = ({ paymentClass, price }) => {
                 console.log(confirmError);
             }
 
-            console.log("payment intent", paymentIntent);
             setProcessing(false);
             if (paymentIntent.status === "succeeded") {
                 setTransactionId(paymentIntent.id);
-                console.log("PAYMENT SUCCEEDED!!!");
                 // save payment information to the server
                 // const enrolledPayload = {
 
@@ -116,18 +111,13 @@ const CheckoutForm = ({ paymentClass, price }) => {
                     price: price,
                     className: paymentClass.name,
                     instructorName: paymentClass.instructorName,
+                    instructorEmail: paymentClass.instructorEmail,
                     transactionId: paymentIntent.id,
                     date: new Date(),
                 };
                 axiosSecure
                     .post("/payments", payloadPaymentInsert)
                     .then((res) => {
-                        console.log(res.data);
-                        console.log(
-                            res.data.docInsertResult.modifiedCount > 0 &&
-                            res.data.deleteResult.modifiedCount > 0 &&
-                            res.data.paymentInsertResult.acknowledged
-                        );
                         if (
                             res.data.docInsertResult.modifiedCount > 0 &&
                             res.data.deleteResult.modifiedCount > 0 &&

@@ -11,8 +11,6 @@ const Payment = () => {
 
     const { id } = useParams();
 
-    console.log(id);
-
     const { data: paymentClass = [] } = useQuery({
         queryKey: ['paymentClass'],
         queryFn: async () => {

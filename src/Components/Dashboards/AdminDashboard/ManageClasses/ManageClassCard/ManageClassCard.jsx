@@ -22,7 +22,6 @@ const ManageClassCard = ({ refetch, item }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
@@ -42,7 +41,6 @@ const ManageClassCard = ({ refetch, item }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({

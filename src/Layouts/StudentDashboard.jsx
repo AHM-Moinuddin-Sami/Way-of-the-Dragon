@@ -1,7 +1,11 @@
 import { Helmet } from "react-helmet-async";
+import { AiOutlineMenu } from "react-icons/ai";
+import { FaBookmark, FaMoneyBillAlt } from "react-icons/fa";
+import { MdAssignmentTurnedIn } from "react-icons/md";
 import { Outlet, Link } from "react-router-dom";
 
 const StudentDashboard = () => {
+
     return (
         <div>
             <Helmet>
@@ -21,10 +25,11 @@ const StudentDashboard = () => {
                         <h3 className="mx-auto text-3xl">Student Options</h3>
                         <hr />
                         {/* Sidebar content here */}
-                        <li className="w-full text-xl"><Link to={"/dashboard/student/selected"}>My Selected Classes</Link></li>
-                        <li className="w-full text-xl"><Link to={"/dashboard/student/enrolled"}>My Enrolled Classes</Link></li>
+                        <li className="w-full text-xl"><Link to={"/dashboard/student/selected"}><FaBookmark></FaBookmark> My Selected Classes</Link></li>
+                        <li className="w-full text-xl"><Link to={"/dashboard/student/enrolled"}><MdAssignmentTurnedIn></MdAssignmentTurnedIn>My Enrolled Classes</Link></li>
+                        <li className="w-full text-xl"><Link to={"/dashboard/student/paymentHistory"}><FaMoneyBillAlt></FaMoneyBillAlt> My Payment History</Link></li>
                         <hr />
-                        <li className="w-full text-xl"><Link to={"/dashboard/student"}>Dashboard Home</Link></li>
+                        <li className="w-full text-xl"><Link to={"/dashboard/student"}><AiOutlineMenu></AiOutlineMenu>Dashboard Home</Link></li>
                     </ul>
 
                 </div>

@@ -12,7 +12,6 @@ const Classes = () => {
         }
     })
 
-    console.log(classes)
 
     return (
         <div className=' md:w-10/12 min-h-[80vh] mx-auto'>

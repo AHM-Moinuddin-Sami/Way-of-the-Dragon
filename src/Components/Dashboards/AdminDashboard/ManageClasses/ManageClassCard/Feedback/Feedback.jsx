@@ -10,8 +10,6 @@ const Feedback = ({ isDenied }) => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const navigate = useNavigate();
-    // console.log(item._id);
-    console.log(id);
 
     const { data: feedbackClass = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['feedbackClass'],
@@ -20,8 +18,6 @@ const Feedback = ({ isDenied }) => {
             return res.data;
         }
     })
-
-    console.log(feedbackClass);
 
     const onSubmit = async (data) => {
         const feedback = data.feedback;
