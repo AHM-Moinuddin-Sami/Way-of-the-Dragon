@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import SectionTitle from "../../../SharedComponents/Section Title/SectionTitle";
 
 const AdminDashboardHome = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -20,9 +21,10 @@ const AdminDashboardHome = () => {
 
     const instructors = users.filter(user => user.role === 'instructor');
     const students = users.filter(user => user.role === 'student');
-    
+
     return (
         <div>
+            <SectionTitle title={"Admin Dashboard"}></SectionTitle>
             <p>Total Users: {users.length}</p>
             <p>Total Instructors: {instructors.length}</p>
             <p>Total Students: {students.length}</p>

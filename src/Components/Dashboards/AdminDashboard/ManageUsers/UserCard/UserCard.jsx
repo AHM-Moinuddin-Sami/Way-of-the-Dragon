@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 
 const UserCard = ({ refetch, user }) => {
 
-    const { name, address, phone, email, gender, photo, role } = user;
+    const { name, address, phoneNumber, email, gender, photo, role } = user;
 
     const handleMakeAdmin = user => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
@@ -44,6 +44,8 @@ const UserCard = ({ refetch, user }) => {
             })
     }
 
+    console.log(phoneNumber);
+
 
     return (
         <div className="card bg-slate-400 text-black shadow-xl">
@@ -60,8 +62,8 @@ const UserCard = ({ refetch, user }) => {
                 <p>Role : <span className="uppercase">{role}</span></p>
                 <p>Email: {email}</p>
                 <p>{address == "" || !address ? "Address unavailable" : `Address: ${address}`} </p>
-                <p>{phone == "" || !phone ? "Contact No unavailable" : `Phone: ${phone}`}</p>
-                <p>{gender == "" || !gender ? "Gender unspecified" : `Gender: ${gender}`}</p>
+                <p>{phoneNumber == "" || !phoneNumber ? "Contact No. unavailable" : `Contact No: ${phoneNumber}`}</p>
+                <p className="">{gender == "" || !gender ? "Gender unspecified" : `Gender: ${gender}`}</p>
                 <div className="card-actions join justify-end">
                     <button onClick={() => handleMakeAdmin(user)} disabled={role === 'admin'} className="btn btn-primary">Make Admin</button>
                     <button onClick={() => handleMakeInstructor(user)} disabled={role === 'instructor'} className="btn btn-primary">Make Instructor</button>

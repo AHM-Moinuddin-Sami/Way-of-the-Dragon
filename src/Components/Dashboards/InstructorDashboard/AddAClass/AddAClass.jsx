@@ -5,9 +5,14 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const AddAClass = () => {
     const { user } = useAuth();
+
+    const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
+
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
         defaultValues: {
@@ -16,17 +21,39 @@ const AddAClass = () => {
         }
     });
 
+    const [axiosSecure] = useAxiosSecure();
+
     const [errorMessage, setErrorMessage] = useState("");
 
     const navigate = useNavigate();
 
 
 
-    const postItem = async (item) => {
+    const handleClassAddition = async (item) => {
         console.log(item);
-        const saveClass = { name: item.className, image: item.photoURL, status: 'pending', enrolledStudents: 0, price: parseFloat(item.price), totalSeats: parseInt(item.availableSeats), instructorName: item.instructorName, instructorEmail: item.instructorEmail };
+        const formData = new FormData();
+        formData.append("image", item.photoFile[0])
+
+        await fetch(img_hosting_url, {
+            method: "POST",
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgResponse => {
+                if (imgResponse.success) {
+                    const saveClass = { name: item.className, image: imgResponse.data.display_url, status: 'pending', enrolledStudents: 0, price: parseFloat(item.price), totalSeats: parseInt(item.availableSeats), instructorName: item.instructorName, instructorEmail: item.instructorEmail };
+                    console.log(saveClass);
+                    postItem(saveClass);
+                }
+            })
+
+
+    }
+
+    const postItem = async (saveClass) => {
         try {
-            const response = await axios.post('http://localhost:5000/classes', saveClass);
+            const response = await axiosSecure.post('http://localhost:5000/classes', saveClass);
+            console.log(response);
             if (response.data.insertedId) {
                 reset();
                 Swal.fire({
@@ -45,7 +72,7 @@ const AddAClass = () => {
         }
     }
 
-    const mutation = useMutation(postItem);
+    const mutation = useMutation(handleClassAddition);
 
 
     const onSubmit = data => {
@@ -68,7 +95,7 @@ const AddAClass = () => {
                 <label className="">
                     <span className="">Class Image*</span>
                 </label>
-                <input className="rounded input-bordered input" {...register("photoURL", { required: true })} />
+                <input type="file" className="rounded file-input file-input-bordered w-full" {...register("photoFile", { required: true })} />
                 {errors.photoURL && <span className="text-red-600">Class photo is required.</span>}
 
                 <label className="">

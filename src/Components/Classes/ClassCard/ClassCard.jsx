@@ -54,8 +54,8 @@ const ClassCard = ({ id, name, photo, instructor, available, price }) => {
     }
 
     return (
-        <div className="card lg:card-side bg-base-100 shadow-xl">
-            <img className="w-1/2 object-cover" src={photo} alt="Album" />
+        <div className={`card lg:card-side shadow-xl ${available >0 ? "bg-base-200" : "bg-red-600"}`}>
+            <img className="w-1/2 rounded object-cover" src={photo} alt="Album" />
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
                 <p>Instructor: {instructor}</p>

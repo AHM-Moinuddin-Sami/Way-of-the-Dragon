@@ -53,7 +53,7 @@ const NavigationBar = () => {
     }
 
     return (
-        <div className="navbar bg-slate-200 bg-opacity-5">
+        <div className={`navbar border-2 border-t-0 border-l-0 border-r-0 bg-slate-200 bg-opacity-5 ${theme === "dark"?"border-b-red-600":"border-b-black"}`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

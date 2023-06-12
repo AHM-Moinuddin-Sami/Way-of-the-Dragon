@@ -8,7 +8,7 @@ const MyClasses = () => {
     const { user } = useAuth();
 
     const [axiosSecure] = useAxiosSecure();
-    const { data: myClasses = []} = useQuery({
+    const { data: myClasses = [], isLoading:loading} = useQuery({
         queryKey: ['myClasses'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/classes/instructor/all/${user.email}`)
@@ -17,8 +17,7 @@ const MyClasses = () => {
     })
 
     return (
-        <div>
-
+        <div hidden={loading}>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -64,6 +63,7 @@ const MyClasses = () => {
                                     </dialog>
                                 </td>
                                 <td>
+                                    
                                     <Link to={`/dashboard/instructor/update/${item._id}`}><button className="btn">Update</button></Link>
                                 </td>
                             </tr>

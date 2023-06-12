@@ -4,6 +4,7 @@ import useAuth from "../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
+import SectionTitle from "../../../SharedComponents/Section Title/SectionTitle";
 
 const Register = () => {
 
@@ -71,7 +72,7 @@ const Register = () => {
         <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1206&q=80")` }}>
             <div className='mx-auto w-11/12 md:w-1/2 bg-white p-8 mt-2 rounded'>
 
-                <h3 className='text-center font-semibold text-4xl'>Registration</h3>
+                <div className="text-black"><SectionTitle title={"Registration"}></SectionTitle></div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="form-control">
 
