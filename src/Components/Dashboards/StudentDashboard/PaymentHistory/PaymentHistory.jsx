@@ -17,11 +17,7 @@ const PaymentHistory = () => {
         },
     });
 
-    console.log(paymentHistory);
-
     paymentHistory.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    console.log(paymentHistory)
 
     return (
         <div className="overflow-x-auto">

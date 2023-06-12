@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center md:p-10 bg-gradient-to-b from-transparent via-orange-600 to-red-800 text-primary-content">
+        <footer className="footer footer-center md:p-10 bg-primary text-primary-content">
             <div>
                 <img className="h-20 w-20" src="https://i.ibb.co/MVgkP8Z/400129-removebg-preview.png" alt="" />
                 <p className="site-title text-2xl">

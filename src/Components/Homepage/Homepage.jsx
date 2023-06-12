@@ -3,6 +3,7 @@ import Banner from "./Banner/Banner";
 import PopularClasses from "./PopularClasses/PopularClasses";
 import PopularInstructors from "./PopularInstructors/PopularInstructors";
 import Entrance from "./Entrance/Entrance";
+import NewsSubscribe from "./NewsSubscribe/NewsSubscribe";
 
 const Homepage = () => {
 
@@ -17,6 +18,7 @@ const Homepage = () => {
                 <PopularClasses></PopularClasses>
                 <PopularInstructors></PopularInstructors>
             </div>
+            <NewsSubscribe></NewsSubscribe>
         </div >
     );
 };
