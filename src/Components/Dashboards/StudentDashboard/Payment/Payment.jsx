@@ -4,6 +4,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import SectionTitle from "../../../../SharedComponents/Section Title/SectionTitle";
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 const Payment = () => {
@@ -24,7 +25,8 @@ const Payment = () => {
 
     return (
         <div>
-            <h2 className="text-3xl">Complete payment for {paymentClass.name} class</h2>
+            <SectionTitle title={"Payment"}></SectionTitle>
+            <h2 className="text-3xl text-center">Complete payment for {paymentClass.name} class</h2>
             <Elements stripe={stripePromise}>
                 <CheckoutForm paymentClass={paymentClass} price={paymentClass.price}></CheckoutForm>
             </Elements>

@@ -35,7 +35,7 @@ const Popularclasses = () => {
     return (
         <div className="mt-auto">
             <SectionTitle title={"Popular classes"}></SectionTitle>
-            <div className="grid md:grid-cols-3 gap-8 justify-items-center">
+            <div className="grid md:grid-cols-3 gap-8 gap-y-10 justify-items-center">
                 {popularclasses.map((item, index) => (
                     <div
                         onMouseEnter={() => handleHover(index)}
@@ -45,12 +45,12 @@ const Popularclasses = () => {
                     >
                         <img
                             className="object-cover border-primary border rounded-full w-72 h-72 md:h-96 md:w-96"
-                            src={item.photo}
-                            alt=""
+                            src={item.image}
+                            alt="https://img.icons8.com/external-filled-outline-icons-maxicons/85/external-japan-japan-filled-outline-filled-outline-icons-maxicons-3.png"
                         />
                         {hoveredItem === index && (
-                            <p className="text-3xl -mt-[50%] px-10 text-center text-red-600 bg-gradient-to-r from-transparent via-black to-transparent absolute top-full left-0 -translate-y-1/2 w-full py-4">
-                                {item.name}
+                            <p className="text-2xl -mt-[50%] px-10 text-center text-red-600 bg-gradient-to-r from-transparent via-black to-transparent absolute top-full left-0 -translate-y-1/2 w-full py-4">
+                                {item.name} <br/> by {item.instructorName}
                             </p>
                         )}
                     </div>

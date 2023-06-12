@@ -4,12 +4,16 @@ import useAuth from "../../../Hooks/useAuth";
 import useInstructor from "../../../Hooks/useInstructor";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useState } from "react";
 
 const ClassCard = ({ id, name, photo, instructor, available, price }) => {
 
     const { user } = useAuth();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
+    const [axiosSecure] = useAxiosSecure();
+    const [enrollmentStatus, setEnrollmentStatus] = useState(false);
 
     const selectClass = async () => {
         if (!user) {
@@ -22,34 +26,54 @@ const ClassCard = ({ id, name, photo, instructor, available, price }) => {
         }
         else {
             console.log(user);
-            try {
-                const response = await axios.patch(
-                    `http://localhost:5000/users/student/select/${user.email}`,
-                    {
-                        id: id,
-                        payment: "unpaid"
+            await axiosSecure
+                .post("/payments/check", {
+                    id: id,
+                    email: user.email,
+                })
+                .then((res) => {
+                    console.log(res.data.error);
+                    if (res.data.error) {
+                        setEnrollmentStatus(true);
+                        // Swal.fire({
+                        //     icon: "error",
+                        //     title: `${res.data.message}`,
+                        //     showConfirmButton: false,
+                        //     timer: 1500,
+                        // });
                     }
-                );
-                console.log(response.data); // Response from the backend
-                if (response.data.modifiedCount > 0) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: `${name} class selected!`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
+
+                });
+            if (!enrollmentStatus) {
+                try {
+                    const response = await axios.patch(
+                        `http://localhost:5000/users/student/select/${user.email}`,
+                        {
+                            id: id,
+                            payment: "unpaid"
+                        }
+                    );
+                    console.log(response.data); // Response from the backend
+                    if (response.data.modifiedCount > 0) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: `${name} class selected!`,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                    else if (response.data.error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: `${response.data.message}`,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
                 }
-                else if (response.data.error) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: `${response.data.message}`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
+                catch (error) {
+                    console.error(error);
                 }
-            }
-            catch (error) {
-                console.error(error);
             }
         }
     }
@@ -61,8 +85,8 @@ const ClassCard = ({ id, name, photo, instructor, available, price }) => {
                     All Classes | Way of the Dragon
                 </title>
             </Helmet>
-            <div className={`card lg:card-side shadow-xl ${available > 0 ? "bg-base-200" : "bg-red-600"}`}>
-                <img className="w-1/2 rounded object-cover" src={photo} alt="Album" />
+            <div className={`card h-full lg:card-side border-primary border-2 shadow-primary shadow-2xl ${available > 0 ? "bg-base-200" : "bg-red-600"}`}>
+                <img className="w-1/2 rounded-xl object-cover" src={photo} alt="Album" />
                 <div className="card-body text-center">
                     <h2 className="font-bold text-3xl">{name}</h2>
                     <hr />

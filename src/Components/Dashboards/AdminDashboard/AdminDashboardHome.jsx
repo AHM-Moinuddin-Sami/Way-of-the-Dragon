@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import SectionTitle from "../../../SharedComponents/Section Title/SectionTitle";
 import { FaUsers } from "react-icons/fa";
+import { MdOutlineClass } from "react-icons/md";
+import { GiTeacher } from "react-icons/gi";
 
 const AdminDashboardHome = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -26,7 +28,7 @@ const AdminDashboardHome = () => {
     return (
         <div>
             <SectionTitle title={"Admin Dashboard"}></SectionTitle>
-            <div className="stats shadow">
+            <div className="stats shadow mx-auto">
 
                 <div className="stat">
                     <div className="stat-figure text-secondary">
@@ -38,7 +40,7 @@ const AdminDashboardHome = () => {
 
                 <div className="stat">
                     <div className="stat-figure text-secondary">
-                        <img width="48" height="48" src="https://img.icons8.com/color/48/personal-trainer.png" alt="personal-trainer" />
+                        <GiTeacher></GiTeacher>
                     </div>
                     <div className="stat-title">Total Instructors</div>
                     <div className="stat-value">{instructors.length}</div>
@@ -46,14 +48,14 @@ const AdminDashboardHome = () => {
 
                 <div className="stat">
                     <div className="stat-figure text-secondary">
-                        <img width="48" height="48" src="https://img.icons8.com/color/48/boxing-2.png" alt="boxing-2" />
+                        <FaUsers></FaUsers>
                     </div>
                     <div className="stat-title">Total Students</div>
                     <div className="stat-value">{students.length}</div>
                 </div>
                 <div className="stat">
                     <div className="stat-figure text-secondary">
-                        <img width="16" height="16" src="https://img.icons8.com/office/16/pushups.png" alt="pushups" />
+                        <MdOutlineClass></MdOutlineClass>
                     </div>
                     <div className="stat-title">Total Classes</div>
                     <div className="stat-value">{classes.length}</div>

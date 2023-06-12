@@ -7,7 +7,7 @@ const Footer = () => {
                 <p className="site-title text-2xl">
                     Way of the Dragon
                 </p>
-                <p>Contact no: 0123123123 Email: query@playtopia.org</p>
+                <p>Contact no: 0123123123 Email: ask@wayofthedragon.com</p>
                 <p>Address: 123 Road, Town City, Big City, Country</p>
             </div>
             <div>

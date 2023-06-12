@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 import SectionTitle from "../../../../SharedComponents/Section Title/SectionTitle";
 
 const SelectedClasses = () => {
-
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const { data: selectedClasses = [], isLoading, refetch } = useQuery({

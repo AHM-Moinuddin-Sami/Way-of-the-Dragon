@@ -1,7 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import { Outlet, Link } from "react-router-dom";
-import { FiMenu, FiUsers } from 'react-icons/fi';
+import { FiUsers } from 'react-icons/fi';
 import { MdOutlineClass } from 'react-icons/md';
+import { AiOutlineMenu } from "react-icons/ai";
 
 const AdminDashboard = () => {
     return (
@@ -23,7 +24,7 @@ const AdminDashboard = () => {
                         <li className="w-full text-xl"><Link to={"/dashboard/admin/users"}><FiUsers></FiUsers> Manage Users</Link></li>
                         <li className="w-full text-xl"><Link to={"/dashboard/admin/classes"}><MdOutlineClass></MdOutlineClass> Manage Classes</Link></li>
                         <hr />
-                        <li className="w-full text-xl"><Link to={"/dashboard/admin"}><FiMenu></FiMenu> Dashboard Home</Link></li>
+                        <li className="w-full text-xl"><Link to={"/dashboard/admin"}><AiOutlineMenu></AiOutlineMenu> Dashboard Home</Link></li>
                     </ul>
 
                 </div>

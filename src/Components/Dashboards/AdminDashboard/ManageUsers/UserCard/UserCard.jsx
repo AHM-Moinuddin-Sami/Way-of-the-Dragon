@@ -6,8 +6,8 @@ const UserCard = ({ refetch, userItem }) => {
     const { name, address, phoneNumber, email, gender, photo, role } = userItem;
     const { user } = useAuth();
 
-    const handleMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    const handleMakeAdmin = sentUser => {
+        fetch(`http://localhost:5000/users/admin/${sentUser._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -16,9 +16,8 @@ const UserCard = ({ refetch, userItem }) => {
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
-                        position: 'top-end',
                         icon: 'success',
-                        title: `${user.name} is an Admin Now!`,
+                        title: `${userItem.name} is an Admin Now!`,
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -26,10 +25,8 @@ const UserCard = ({ refetch, userItem }) => {
             })
     }
 
-    // console.log(user);
-
-    const handleMakeInstructor = user => {
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+    const handleMakeInstructor = sentUser => {
+        fetch(`http://localhost:5000/users/instructor/${sentUser._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -38,18 +35,14 @@ const UserCard = ({ refetch, userItem }) => {
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
-                        position: 'top-end',
                         icon: 'success',
-                        title: `${user.name} is an Instructor Now!`,
+                        title: `${userItem.name} is an Instructor Now!`,
                         showConfirmButton: false,
                         timer: 1500
                     })
                 }
             })
     }
-
-    console.log(phoneNumber);
-
 
     return (
         <div className="card bg-slate-400 text-black shadow-xl">
@@ -61,7 +54,7 @@ const UserCard = ({ refetch, userItem }) => {
             </div>
 
             <div className="card-body">
-                <h2 className="flex items-center gap-2 text-3xl font-bold">{name} 
+                <h2 className="flex items-center gap-2 text-3xl font-bold">{name}
                     {email === user.email
                         ? <div className="badge badge-primary">You</div>
                         : ""
@@ -73,8 +66,8 @@ const UserCard = ({ refetch, userItem }) => {
                 <p>{phoneNumber == "" || !phoneNumber ? "Contact No. unavailable" : `Contact No: ${phoneNumber}`}</p>
                 <p className="">{gender == "" || !gender ? "Gender unspecified" : `Gender: ${gender}`}</p>
                 <div className="card-actions join justify-end">
-                    <button onClick={() => handleMakeAdmin(user)} disabled={role === 'admin' || email === user.email} className="btn btn-primary">Make Admin</button>
-                    <button onClick={() => handleMakeInstructor(user)} disabled={role === 'instructor' || email === user.email} className="btn btn-primary">Make Instructor</button>
+                    <button onClick={() => handleMakeAdmin(userItem)} disabled={role === 'admin' || email === user.email} className="btn btn-primary">Make Admin</button>
+                    <button onClick={() => handleMakeInstructor(userItem)} disabled={role === 'instructor' || email === user.email} className="btn btn-primary">Make Instructor</button>
                 </div>
             </div>
         </div>

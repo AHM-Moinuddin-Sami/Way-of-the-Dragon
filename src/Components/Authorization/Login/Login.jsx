@@ -39,10 +39,7 @@ const Login = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200 " style={{ backgroundImage: `url("https://i.ibb.co/qmDvcyQ/pxfuel.jpg")`, backgroundSize: 'cover' }}>
-            
-
             <div className="hero-content flex-col lg:flex-row-reverse">
-
                 <img src="https://i.ibb.co/MVgkP8Z/400129-removebg-preview.png" alt="" />
                 <div className='card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100'>
                     <div className="card-body">

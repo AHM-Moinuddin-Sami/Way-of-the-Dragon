@@ -10,7 +10,7 @@ import anime from "animejs";
 
 const NavigationBar = () => {
 
-    const [theme, setTheme] = useState("");
+    const [theme, setTheme] = useState("light");
     const imageRef = useRef(null);
 
     const [isAdmin] = useAdmin();
@@ -58,15 +58,14 @@ const NavigationBar = () => {
                         <li><Link to={"/classes"}>All Classes</Link></li>
                         <li><Link to={"/instructors"}>All Instructors</Link></li>
                         {
+                            isStudent && <li><Link to={"/dashboard/student"}>Dashboard</Link></li>
+                        }
+                        {
                             isAdmin && <li><Link to={"/dashboard/admin"}>Dashboard</Link></li>
                         }
 
                         {
                             isInstructor && <li><Link to={"/dashboard/instructor"}>Dashboard</Link></li>
-                        }
-
-                        {
-                            isStudent && <li><Link to={"/dashboard/student"}>Dashboard</Link></li>
                         }
                         <li>
                             <button onClick={() => toggleTheme()} className="swap swap-rotate">

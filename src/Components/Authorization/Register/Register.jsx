@@ -69,7 +69,7 @@ const Register = () => {
     }
 
     return (
-        <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1206&q=80")` }}>
+        <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: `url("https://i.ibb.co/K9R2TMJ/pxfuel-1.jpg")` }}>
             <div className='mx-auto w-11/12 md:w-1/2 bg-white p-8 mt-2 rounded'>
 
                 <div className="text-black"><SectionTitle title={"Registration"}></SectionTitle></div>
@@ -115,9 +115,9 @@ const Register = () => {
                     <label>Gender</label>
                     <select className="rounded input-bordered input" {...register("gender")}>
                         <option value="">Prefer not to divulge</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
                     </select>
 
                     <label>Phone Number</label>

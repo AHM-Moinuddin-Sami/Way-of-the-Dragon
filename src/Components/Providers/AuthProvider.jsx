@@ -40,7 +40,6 @@ const AuthProvider = ({ children }) => {
         });
     }
 
-    // TODO: Axios here with JWT
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, loggedUser => {
             setUser(loggedUser);

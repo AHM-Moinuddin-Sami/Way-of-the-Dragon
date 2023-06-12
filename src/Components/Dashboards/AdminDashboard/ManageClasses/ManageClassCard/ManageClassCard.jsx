@@ -46,7 +46,6 @@ const ManageClassCard = ({ refetch, item }) => {
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
-                        position: 'top-end',
                         icon: 'error',
                         title: `${item.name} has been denied!`,
                         showConfirmButton: false,
@@ -58,7 +57,7 @@ const ManageClassCard = ({ refetch, item }) => {
 
     return (
         <div className="card bg-slate-400 text-black shadow-xl">
-            <figure className=""><img className="object-cover h-64" src={image} alt="Avatar" /></figure>
+            <img className="object-cover rounded-xl h-64" src={image} alt="Avatar" />
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
                 <p>Status: <span className="uppercase">{status}</span></p>

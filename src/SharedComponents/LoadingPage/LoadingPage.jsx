@@ -21,9 +21,9 @@ const LoadingPage = () => {
 
 
     return (
-        <div className="flex justify-center items-center container">
+        <div className="flex bg-black w-full px-auto justify-center items-center container">
             <svg
-            className=""
+            className="px-auto"
                 id="Layer_1"
                 data-name="Layer 1"
                 xmlns="http://www.w3.org/2000/svg"

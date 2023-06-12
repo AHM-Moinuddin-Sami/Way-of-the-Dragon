@@ -1,11 +1,15 @@
 import { Helmet } from "react-helmet-async";
 import { Outlet, Link } from "react-router-dom";
+import { AiOutlineFileAdd, AiOutlineMenu } from 'react-icons/ai';
+import { MdOutlineCollectionsBookmark } from "react-icons/md";
 
 const InstructorDashboard = () => {
     return (
         <div>
             <Helmet>
-                <title>Admin Dashboard | Way of the Dragon</title>
+                <title>
+                    Instructor Dashboard | Way of the Dragon
+                </title>
             </Helmet>
             <div className="drawer md:w-10/12 min-h-[80vh] mx-auto lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -19,10 +23,10 @@ const InstructorDashboard = () => {
 
                         <h3 className="mx-auto text-3xl">Instructor Options</h3>
                         <hr />
-                        <li className="w-full text-xl"><Link to={"/dashboard/instructor/addclass"}>Add A Class</Link></li>
-                        <li className="w-full text-xl"><Link to={"/dashboard/instructor/myclasses"}>My Classes</Link></li>
+                        <li className="w-full text-xl"><Link to={"/dashboard/instructor/addclass"}><AiOutlineFileAdd></AiOutlineFileAdd> Add A Class</Link></li>
+                        <li className="w-full text-xl"><Link to={"/dashboard/instructor/myclasses"}><MdOutlineCollectionsBookmark></MdOutlineCollectionsBookmark> My Classes</Link></li>
                         <hr />
-                        <li className="w-full text-xl"><Link to={"/dashboard/instructor"}>Dashboard Home</Link></li>
+                        <li className="w-full text-xl"><Link to={"/dashboard/instructor"}><AiOutlineMenu></AiOutlineMenu> Dashboard Home</Link></li>
                     </ul>
                 </div>
             </div>

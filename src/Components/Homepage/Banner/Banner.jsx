@@ -54,7 +54,7 @@ export default function Banner() {
 
     return (
         <div>
-            <div className='relative pt-5 mb-20 min-h-fit'>
+            <div className='relative pt-5 min-h-fit'>
                 <video className="top-0 left-0 absolute h-full w-full object-cover" autoPlay muted loop>
                     <source src="/firebg.mp4" type="video/mp4" />
                 </video>

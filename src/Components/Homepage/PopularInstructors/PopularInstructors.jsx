@@ -35,7 +35,7 @@ const PopularInstructors = () => {
     return (
         <div>
             <SectionTitle title={"Popular Instructors"}></SectionTitle>
-            <div className="grid md:grid-cols-3 gap-8 justify-items-center">
+            <div className="grid md:grid-cols-3 gap-8 gap-y-10 justify-items-center">
                 {popularInstructors.map((item, index) => (
                     <div
                         onMouseEnter={() => handleHover(index)}
