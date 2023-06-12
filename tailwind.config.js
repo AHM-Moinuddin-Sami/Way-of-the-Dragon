@@ -5,7 +5,8 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
@@ -18,7 +19,7 @@ export default {
           ".navbar": {
             "background-color": "black"
           },
-          ".entrancePrimary": "black"
+          "neutral": "#000000"
         },
         light: {
           ...require("daisyui/src/theming/themes")["[data-theme=light]"],
@@ -27,12 +28,11 @@ export default {
           ".navbar": {
             "background-color": "#d01c1f"
           },
-          ".entrance":"bg-gradient-to-b from-transparent via-red-300 to-transparent"
+          "neutral": "#d01c1f"
         },
       },
       // 'light',
       // 'dark'
     ],
   },
-}
-
+};
