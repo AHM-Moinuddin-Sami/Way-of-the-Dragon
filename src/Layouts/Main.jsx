@@ -47,7 +47,7 @@ const Main = () => {
 
     return (
         <>
-            <div hidden={showComponent}>
+            <div className="main-font" hidden={showComponent}>
                 <NavigationBar></NavigationBar>
                 <Outlet></Outlet>
                 <Footer></Footer>

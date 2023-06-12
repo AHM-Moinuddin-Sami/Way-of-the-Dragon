@@ -15,7 +15,7 @@ const Classes = () => {
     console.log(classes)
 
     return (
-        <>
+        <div className=' md:w-10/12 min-h-[80vh] mx-auto'>
         <SectionTitle title={"All Classes"}></SectionTitle>
             <div className='grid grid-cols-3 gap-4'>
                 {
@@ -30,7 +30,7 @@ const Classes = () => {
                     ></ClassCard>)
                 }
             </div>
-        </>
+        </div>
     );
 };
 

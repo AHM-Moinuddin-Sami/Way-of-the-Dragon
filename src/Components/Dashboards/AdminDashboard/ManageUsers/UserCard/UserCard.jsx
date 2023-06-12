@@ -1,8 +1,10 @@
 import Swal from "sweetalert2";
+import useAuth from "../../../../../Hooks/useAuth";
 
-const UserCard = ({ refetch, user }) => {
+const UserCard = ({ refetch, userItem }) => {
 
-    const { name, address, phoneNumber, email, gender, photo, role } = user;
+    const { name, address, phoneNumber, email, gender, photo, role } = userItem;
+    const { user } = useAuth();
 
     const handleMakeAdmin = user => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
@@ -23,6 +25,8 @@ const UserCard = ({ refetch, user }) => {
                 }
             })
     }
+
+    // console.log(user);
 
     const handleMakeInstructor = user => {
         fetch(`http://localhost:5000/users/instructor/${user._id}`, {
@@ -57,16 +61,20 @@ const UserCard = ({ refetch, user }) => {
             </div>
 
             <div className="card-body">
-                <h2 className="card-title">{name}</h2>
+                <h2 className="flex items-center gap-2 text-3xl font-bold">{name} 
+                    {email === user.email
+                        ? <div className="badge badge-primary">You</div>
+                        : ""
+                    }</h2>
 
-                <p>Role : <span className="uppercase">{role}</span></p>
+                <p><span className="uppercase"><div className="badge h-8 text-2xl">{role}</div></span></p>
                 <p>Email: {email}</p>
                 <p>{address == "" || !address ? "Address unavailable" : `Address: ${address}`} </p>
                 <p>{phoneNumber == "" || !phoneNumber ? "Contact No. unavailable" : `Contact No: ${phoneNumber}`}</p>
                 <p className="">{gender == "" || !gender ? "Gender unspecified" : `Gender: ${gender}`}</p>
                 <div className="card-actions join justify-end">
-                    <button onClick={() => handleMakeAdmin(user)} disabled={role === 'admin'} className="btn btn-primary">Make Admin</button>
-                    <button onClick={() => handleMakeInstructor(user)} disabled={role === 'instructor'} className="btn btn-primary">Make Instructor</button>
+                    <button onClick={() => handleMakeAdmin(user)} disabled={role === 'admin' || email === user.email} className="btn btn-primary">Make Admin</button>
+                    <button onClick={() => handleMakeInstructor(user)} disabled={role === 'instructor' || email === user.email} className="btn btn-primary">Make Instructor</button>
                 </div>
             </div>
         </div>

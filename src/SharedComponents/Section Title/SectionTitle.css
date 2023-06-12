@@ -1,13 +1,6 @@
 /* @import url('https://www.dafont.com/zenzai-itacha.font'); */
 
-@font-face {
-    font-family: 'SectionFont';
-    src: url('/Hirokawa.otf') format('opentype');
-}
 
-.section-title {
-    font-family: 'SectionFont', sans-serif;
-}
 
 .border-gradient {
     width: 100%;

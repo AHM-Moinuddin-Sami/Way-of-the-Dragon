@@ -6,7 +6,6 @@ import { AuthContext } from "../../Components/Providers/AuthProvider";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
 import useStudent from "../../Hooks/useStudent";
-import "./NavigationBar.css"
 import anime from "animejs";
 
 const NavigationBar = () => {

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../SharedComponents/Section Title/SectionTitle";
 import InstructorCard from "./InstructorCard/InstructorCard";
+import { Helmet } from "react-helmet-async";
 
 const Instructors = () => {
 
@@ -15,7 +16,12 @@ const Instructors = () => {
     console.log(instructors);
 
     return (
-        <div className="min-h-screen">
+        <div className="md:w-10/12 min-h-[80vh] mx-auto">
+            <Helmet>
+                <title>
+                    All Instructors | Way of the Dragon
+                </title>
+            </Helmet>
             <SectionTitle title={"All Instructors"}></SectionTitle>
             <div className="grid grid-cols-3 gap-3">
                 {

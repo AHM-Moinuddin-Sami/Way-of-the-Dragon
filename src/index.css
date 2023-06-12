@@ -3,15 +3,39 @@
 @tailwind utilities;
 
 
-.container {
-    position: relative;
-  }
-  
-  .video-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+@font-face {
+    font-family: 'MainFont';
+    src: url('/aAsianHiro.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'TitleFont';
+    src: url('/YamatoJapan.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'MenuFont';
+    src: url('/ONIGASHIMA.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'SectionFont';
+    src: url('/Hirokawa.otf') format('opentype');
+}
+
+.section-title {
+    font-family: 'SectionFont', sans-serif;
+}
+
+.site-title {
+    font-family: 'TitleFont', sans-serif;
+}
+
+.menu-title {
+    font-family: 'MenuFont', sans-serif;
+}
+
+.main-font {
+    font-family: 'MainFont', sans-serif;
+    font-size: x-large;
+}
